@@ -1,0 +1,39 @@
+[
+  {
+    "variant": "E5 seul — premier passage",
+    "question": "Which reflex and muscle findings are listed for hypertrophic neuropathy of Dejerine-Sottas?",
+    "model": "qwen2.5:7b",
+    "passages": [
+      {
+        "id": "medquad_1579759d0e7313f58881:0",
+        "document_id": "medquad_1579759d0e7313f58881",
+        "title": "What is (are) Hypertrophic neuropathy of Dejerine-Sottas ?",
+        "text": "Hypertrophic neuropathy of Dejerine-Sottas (Dejerine-Sottas syndrome) is a term sometimes used to describe a severe, early childhood form of Charcot-Marie-Tooth disease (sometimes called type 3) that is characterized by sensory loss with ataxia in the limbs furthest from the body and pes cavus with progression towards the limbs closest to the body. Depending on the specific gene that is altered, this severe, early onset form of the disorder may also be classified as type 1 or type 4. Dejerine-Sottas syndrome has been associated with mutations in the MPZ, PMP22, EGR2, and PRX genes. Autosomal dominant and autosomal recessive inheritance have been described.",
+        "dense_score": 0.9198898673057556,
+        "accepted": true
+      }
+    ],
+    "answer": "Les passages disponibles ne suffisent pas pour répondre à cette question.",
+    "mode": "abstain",
+    "warning": null
+  },
+  {
+    "variant": "E5 + mMiniLM — premier passage",
+    "question": "Which reflex and muscle findings are listed for hypertrophic neuropathy of Dejerine-Sottas?",
+    "model": "qwen2.5:7b",
+    "passages": [
+      {
+        "id": "medquad_e277a26ae64d9030e0b2:1",
+        "document_id": "medquad_e277a26ae64d9030e0b2",
+        "title": "What are the symptoms of Hypertrophic neuropathy of Dejerine-Sottas ?",
+        "text": "nerve changes - Hyporeflexia - Increased CSF protein - Infantile onset - Kyphoscoliosis - Motor delay - Muscular hypotonia - Onion bulb formation - Pes cavus - Segmental peripheral demyelination/remyelination - Sensory ataxia - Steppage gait - Ulnar claw - Variable expressivity - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of",
+        "dense_score": 0.9015719294548035,
+        "accepted": true,
+        "reranker_score": 4.8772454261779785
+      }
+    ],
+    "answer": "Les signes réflexiques et musculaires mentionnés pour la neuropathie hypertrophique de Dejerine-Sottas incluent l'hyporéflexie et une hypotonie musculaire. [1]",
+    "mode": "ollama",
+    "warning": null
+  }
+]
