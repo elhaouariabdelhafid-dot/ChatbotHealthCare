@@ -1,0 +1,21 @@
+id,question,expected_title
+Q01,Décris le syndrome de Muir-Torre.,What is (are) Muir-Torre syndrome ?
+Q02,Quels gènes peuvent provoquer le syndrome de Muir-Torre ?,What causes Muir-Torre syndrome ?
+Q03,Comment réduire le risque de cancer du sein ?,How to prevent Breast Cancer ?
+Q04,Comment prévenir le cancer colorectal ?,How to prevent Colorectal Cancer ?
+Q05,Quels signes peut provoquer la pyomyosite ?,What are the symptoms of Pyomyositis ?
+Q06,Quels sont les symptômes de la polymyosite ?,What are the symptoms of Polymyositis ?
+Q07,Comment prévenir le cancer anal ?,How to prevent Anal Cancer ?
+Q08,How can oral cavity and oropharyngeal cancer be prevented?,How to prevent Oral Cavity and Oropharyngeal Cancer ?
+Q09,Que sait-on de la prévention du cancer du foie ?,How to prevent Liver (Hepatocellular) Cancer ?
+Q10,What is diabetic heart disease?,What is (are) Diabetic Heart Disease ?
+Q11,Quelles informations les documents donnent-ils sur la prévention du cancer du sein ?,How to prevent Breast Cancer ?
+Q12,Quelles mesures protectrices permettent de diminuer le risque de cancer mammaire ?,How to prevent Breast Cancer ?
+Q13,Quelles manifestations cliniques retrouve-t-on chez les personnes atteintes de pyomyosite ?,What are the symptoms of Pyomyositis ?
+Q14,Comment reconnaître les symptômes d'une polymyosite ?,What are the symptoms of Polymyositis ?
+Q15,"Quelle maladie associe des tumeurs sébacées de la peau à certains cancers internes, dans le cadre du syndrome de Lynch ?",What is (are) Muir-Torre syndrome ?
+Q16,Quelles mutations génétiques sont associées à Muir-Torre ?,What causes Muir-Torre syndrome ?
+Q17,Quels moyens existent pour diminuer le risque de développer un cancer du côlon ou du rectum ?,How to prevent Colorectal Cancer ?
+Q18,Peut-on réduire le risque de cancer de la cavité buccale et de l'oropharynx ?,How to prevent Oral Cavity and Oropharyngeal Cancer ?
+Q19,Quelles sont les mesures de prévention du cancer hépatocellulaire ?,How to prevent Liver (Hepatocellular) Cancer ?
+Q20,Quelles mesures peuvent contribuer à prévenir les cancers de la région anale ?,How to prevent Anal Cancer ?

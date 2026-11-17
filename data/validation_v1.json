@@ -1,0 +1,394 @@
+{
+  "version": 1,
+  "corpus_sha256": "4191c157bfd8c45f885a0f4905db513dbb31f6512707cfaca0e6205b1e8ba6a0",
+  "seed": 20261116,
+  "scope": "Validation de développement, annotations proposées à relire. Pas un test final indépendant.",
+  "limitations": [
+    "Les documents positifs sont choisis dans le corpus ; les autres documents pertinents ne sont pas annotés exhaustivement.",
+    "Les traductions automatiques peuvent être erronées. Les relire avec les questions originales.",
+    "Les 5 questions médicales négatives visent des informations personnelles absentes, pas des maladies absentes du corpus.",
+    "Si Qwen traduit les questions puis répond, ces résultats ne sont pas indépendants de ce modèle."
+  ],
+  "cases": [
+    {
+      "id": "P01",
+      "category": "covered",
+      "question": "Qu'est-ce qui (ce sont) la maladie de Muir-Torre ?",
+      "original_question": "What is (are) Muir-Torre syndrome ?",
+      "topic": "Muir-Torre syndrome",
+      "question_type": "information",
+      "relevant_documents": [
+        "medquad_500e03f53c57b02e2abb"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "Muir-Torre syndrome (MTS) is a form of Lynch syndrome and is characterized by sebaceous (oil gland) skin tumors in association with internal cancers. The most common internal site involved is the gastrointestinal tract (with almost half of affected people having colorectal cancer), followed by the genitourinary tract. Skin lesions may develop before or after the diagnosis of the internal cancer. MTS is caused by changes (mutations) in the MLH1 or MSH2 genes and is inherited in an autosomal dominant manner. A mutation in either of these genes gives a person an increased lifetime risk of developing the skin changes and types of cancer associated with the condition.",
+      "source_url": "https://rarediseases.info.nih.gov/gard/6821/muir-torre-syndrome",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P02",
+      "category": "covered",
+      "question": "Quels sont les symptômes de la cataract antérieure polaire dominante ?",
+      "original_question": "What are the symptoms of Cataract anterior polar dominant ?",
+      "topic": "Cataract anterior polar dominant",
+      "question_type": "symptoms",
+      "relevant_documents": [
+        "medquad_689cca8393319e03ddd9"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "What are the signs and symptoms of Cataract anterior polar dominant? The Human Phenotype Ontology provides the following list of signs and symptoms for Cataract anterior polar dominant. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Anterior polar cataract - Autosomal dominant inheritance - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+      "source_url": "https://rarediseases.info.nih.gov/gard/1140/cataract-anterior-polar-dominant",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P03",
+      "category": "covered",
+      "question": "Quelles sont les causes de la maladie de Kyrle ?",
+      "original_question": "What causes Kyrle disease ?",
+      "topic": "Kyrle disease",
+      "question_type": "causes",
+      "relevant_documents": [
+        "medquad_199cf426d96a28761bb0"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "What causes Kyrle disease? The cause of Kyrle disease is currently unknown. Some cases appear to be idiopathic (no known triggers), or inherited. What has been found is that Kyrle disease appears to occur more frequently in patients with certain systemic disorders, which include diabetes mellitus; renal disease (chronic renal failure, albuminuria, elevated serum creatinine, abnormal creatinine clearance, polyuria); hepatic abnormalities (alcoholic cirrhosis); and congestive heart failure. It has been thought that metabolic disorders associated with Kyrle disease are somehow responsible for development of abnormal keratinization and connective tissue changes, but the exact mechanism by which this happens is unclear.",
+      "source_url": "https://rarediseases.info.nih.gov/gard/9738/kyrle-disease",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P04",
+      "category": "covered",
+      "question": "Comment prévenir la Cancer du sein ?",
+      "original_question": "How to prevent Breast Cancer ?",
+      "topic": "Breast Cancer",
+      "question_type": "prevention",
+      "relevant_documents": [
+        "medquad_0e8c8dd70097677f9d80"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "The use of certain medicines and other factors decrease the risk of breast cancer. Anything that decreases your chance of getting a disease is called a protective factor.    Protective factors for breast cancer include the following:            - Taking any of the following:                  -  Estrogen-only hormone therapy after a hysterectomy.       -  Selective estrogen receptor modulators (SERMs).        -  Aromatase inhibitors.                - Less exposure of breast tissue to estrogen made by the body. This can be a result of:                  - Early pregnancy.       - Breastfeeding.                - Getting enough exercise.     - Having any of the following procedures:                  -  Mastectomy to reduce the risk of cancer.       -  Oophorectomy to reduce the risk of cancer.       -  Ovarian ablation.",
+      "source_url": "https://www.cancer.gov/types/breast/patient/breast-treatment-pdq",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P05",
+      "category": "covered",
+      "question": "Qu'est-ce qui (est) le Tumeur de Buschke Lowenstein ?",
+      "original_question": "What is (are) Buschke Lowenstein tumor ?",
+      "topic": "Buschke Lowenstein tumor",
+      "question_type": "information",
+      "relevant_documents": [
+        "medquad_50a6689e08cbd8d25488"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "Buschke Lowenstein tumor is a tumor that most commonly occurs near the penis or anus.  This tumor often looks like a large genital wart; it tends to grow slowly, but can sometimes grow very large and spread into surrounding tissues.  These tumors rarely spread to other parts of the body.  Treatment of these tumors begins with removal by surgery.  Chemotherapy and radiation therapy have also been shown to be effective treatments for this tumor type.",
+      "source_url": "https://rarediseases.info.nih.gov/gard/9663/buschke-lowenstein-tumor",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P06",
+      "category": "covered",
+      "question": "Quels sont les symptômes de la pyomiosite ?",
+      "original_question": "What are the symptoms of Pyomyositis ?",
+      "topic": "Pyomyositis",
+      "question_type": "symptoms",
+      "relevant_documents": [
+        "medquad_d456d97948dbacf8eafd"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "What are the signs and symptoms of Pyomyositis? The Human Phenotype Ontology provides the following list of signs and symptoms for Pyomyositis. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Abnormality of temperature regulation 90% Myalgia 90% Myositis 90% Recurrent cutaneous abscess formation 90% Leukocytosis 50% Weight loss 50% Renal insufficiency 7.5% Sepsis 7.5% Sudden cardiac death 7.5% The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+      "source_url": "https://rarediseases.info.nih.gov/gard/4614/pyomyositis",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P07",
+      "category": "covered",
+      "question": "Quelles sont les causes de la citrullinémie type I ?",
+      "original_question": "What causes Citrullinemia type I ?",
+      "topic": "Citrullinemia type I",
+      "question_type": "causes",
+      "relevant_documents": [
+        "medquad_8875ea826c38d44335a1"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "What causes citrullinemia type I? Citrullinemia type I is caused by mutations in the ASS1 gene. This gene provides instructions for making an enzyme, argininosuccinate synthetase 1, that is responsible for the third step in the urea cycle. Mutations in the ASS1 gene reduce the activity of the enzyme, which disrupts the urea cycle and prevents the body from processing nitrogen effectively. Excess nitrogen (in the form of ammonia) and other byproducts of the urea cycle accumulate in the bloodstream. Ammonia is particularly toxic to the nervous system, which helps explain the neurologic symptoms (such as lethargy, seizures, and ataxia) that are often seen in this condition.",
+      "source_url": "https://rarediseases.info.nih.gov/gard/6114/citrullinemia-type-i",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P08",
+      "category": "covered",
+      "question": "Comment prévenir la Cancérologie du Foie (Carcinome Hepatocellulaire) ?",
+      "original_question": "How to prevent Liver (Hepatocellular) Cancer ?",
+      "topic": "Liver (Hepatocellular) Cancer",
+      "question_type": "prevention",
+      "relevant_documents": [
+        "medquad_9f719504f17d5312a34e"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "Key Points\n                    - Avoiding risk factors and increasing protective factors may help prevent cancer.    - The following risk factors may increase the risk of liver cancer:         - Hepatitis B and C     - Cirrhosis     - Aflatoxin        - The following protective factor may decrease the risk of liver cancer:         - Hepatitis B vaccine        - Cancer prevention clinical trials are used to study ways to prevent cancer.     - New ways to prevent liver cancer are being studied in clinical trials.\n                \n                \n                    Avoiding risk factors and increasing protective factors may help prevent cancer.\n                    Avoiding cancer risk factors may help prevent certain cancers. Risk factors include smoking, being overweight, and not getting enough exercise. Increasing protective factors such as quitting smoking and exercising may also help prevent some cancers. Talk to your doctor or other health care professional about how you might lower your risk of cancer.\n                \n                \n                    The following risk factors may increase the risk of liver cancer:\n                    Hepatitis B and C    Having chronic hepatitis B or chronic hepatitis C increases the risk of developing liver cancer. The risk is even greater for people with both hepatitis B and C. Also, the longer the hepatitis infection lasts (especially hepatitis C), the greater the risk.    In a study of patients with chronic hepatitis C, those who were treated to lower their iron levels by having blood drawn and eating a low-iron diet were less likely to develop liver cancer than those who did not have this treatment.       Cirrhosis    The risk of developing liver cancer is increased for people who have cirrhosis, a disease in which healthy liver tissue is replaced by scar tissue. The scar tissue blocks the flow of blood through the liver and keeps it from working as it should. Chronic alcoholism and chronic hepatitis C are the most common causes of cirrhosis.       Aflatoxin    The risk of developing liver cancer may be increased by eating foods that contain aflatoxin (poison from a fungus that can grow on foods, such as grains and nuts, that have not been stored properly).\n                \n                \n                    The following protective factor may decrease the risk of liver cancer:\n                    Hepatitis B vaccine    Preventing hepatitis B infection (by being vaccinated for hepatitis B) has been shown to lower the risk of liver cancer in children. It is not yet known if it lowers the risk in adults.\n                \n                \n                    Cancer prevention clinical trials are used to study ways to prevent cancer.\n                    Cancer prevention clinical trials are used to study ways to lower the risk of developing certain types of cancer. Some cancer prevention trials are conducted with healthy people who have not had cancer but who have an increased risk for cancer. Other prevention trials are conducted with people who have had cancer and are trying to prevent another cancer of the same type or to lower their chance of developing a new type of cancer. Other trials are done with healthy volunteers who are not known to have any risk factors for cancer.    The purpose of some cancer prevention clinical trials is to find out whether actions people take can prevent cancer. These may include eating fruits and vegetables, exercising, quitting smoking, or taking certain medicines, vitamins, minerals, or food supplements.\n                \n                \n                    New ways to prevent liver cancer are being studied in clinical trials.\n                    Clinical trials are taking place in many parts of the country. Information about clinical trials can be found in the Clinical Trials section of the NCI website. Check NCI's list of cancer clinical trials for liver cancer prevention trials that are now accepting patients.",
+      "source_url": "https://www.cancer.gov/types/liver/patient/liver-prevention-pdq",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P09",
+      "category": "covered",
+      "question": "Qu'est-ce (ce sont) l'usage abusif des drogues ?",
+      "original_question": "What is (are) Drug Abuse ?",
+      "topic": "Drug Abuse",
+      "question_type": "information",
+      "relevant_documents": [
+        "medquad_fc50fd9b8d505602911e"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "Drug abuse is a serious public health problem that affects almost every community and family in some way. Each year drug abuse causes millions of serious illnesses or injuries among Americans. Abused drugs include       - Methamphetamine    - Anabolic steroids    - Club drugs    - Cocaine    - Heroin    - Inhalants    - Marijuana    - Prescription drugs       Drug abuse also plays a role in many major social problems, such as drugged driving, violence, stress, and child abuse. Drug abuse can lead to homelessness, crime, and missed work or problems with keeping a job. It harms unborn babies and destroys families. There are different types of treatment for drug abuse. But the best is to prevent drug abuse in the first place.     NIH: National Institute on Drug Abuse",
+      "source_url": "https://www.nlm.nih.gov/medlineplus/drugabuse.html",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P10",
+      "category": "covered",
+      "question": "Quels sont les symptômes de la migraine hémipalpitation familiale du type 1 ?",
+      "original_question": "What are the symptoms of Familial hemiplegic migraine type 1 ?",
+      "topic": "Familial hemiplegic migraine type 1",
+      "question_type": "symptoms",
+      "relevant_documents": [
+        "medquad_4be182437a8d8f633ee2"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "What are the signs and symptoms of Familial hemiplegic migraine type 1? The symptoms and severity can vary considerably among people with hemiplegic migraine. Signs and symptoms associated with aura may include: Visual disturbance (e.g. blind spots, flashing lights, zigzag pattern, and double vision) Sensory loss (e.g., numbness or paresthesias of the face or an extremity) Difficulty with speech (which usually occur along with right-sided weakness) Motor weakness involves areas affected by sensory symptoms and varies from mild clumsiness to complete deficit. Affected people may also experience neurologic symptoms such as confusion, drowsiness, impaired consciousness, coma, psychosis, and/or memory loss. Neurologic symptoms can last for hours to days. Attention and memory loss can last weeks to months. However, permanent motor, sensory, language, or visual symptoms are extremely rare. The Human Phenotype Ontology provides the following list of signs and symptoms for Familial hemiplegic migraine type 1. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Abnormality of movement 90% Hemiplegia/hemiparesis 90% Incoordination 50% Nystagmus 50% Abnormality of retinal pigmentation 7.5% EEG abnormality 7.5% Neurological speech impairment 7.5% Sensorineural hearing impairment 7.5% Seizures 5% Tremor 5% Agitation - Anxiety - Ataxia - Auditory hallucinations - Autosomal dominant inheritance - Cerebellar atrophy - Coma - Confusion - Drowsiness - Dyscalculia - Dysphasia - Fever - Hemiparesis - Hemiplegia - Heterogeneous - Migraine with aura - Psychosis - Transient unilateral blurring of vision - Visual hallucinations - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+      "source_url": "https://rarediseases.info.nih.gov/gard/2638/familial-hemiplegic-migraine-type-1",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P11",
+      "category": "covered",
+      "question": "Quelles sont les causes de la Syndrome de Peutz-Jeghers ?",
+      "original_question": "What causes Peutz-Jeghers syndrome ?",
+      "topic": "Peutz-Jeghers syndrome",
+      "question_type": "causes",
+      "relevant_documents": [
+        "medquad_89706860f888b16cd53c"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "What causes Peutz-Jeghers syndrome? Peutz-Jeghers syndrome (PJS) is caused by changes (mutations) in the STK11 gene. STK11 is a tumor suppressor gene which means that it encodes a protein that helps keep cells from growing and dividing too rapidly or in an uncontrolled way. Mutations in STK11 result in a defective protein that is unable to carry out its normal role. This leads to the development of the polyps and tumors found in PJS. Some people with PJS do not have mutations in the STK11 gene. In these cases, the cause is unknown.",
+      "source_url": "https://rarediseases.info.nih.gov/gard/7378/peutz-jeghers-syndrome",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P12",
+      "category": "covered",
+      "question": "Comment prévenir la Cancérose épithéliale ovarienne, la Cancérose tubaire fécale et le Cancer primaire de l'ovocythène ?",
+      "original_question": "How to prevent Ovarian Epithelial, Fallopian Tube, and Primary Peritoneal Cancer ?",
+      "topic": "Ovarian Epithelial, Fallopian Tube, and Primary Peritoneal Cancer",
+      "question_type": "prevention",
+      "relevant_documents": [
+        "medquad_4a08f0110fee3cb102c8"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "Women with an increased risk of ovarian cancer may consider surgery to lessen the risk. Some women who have an increased risk of ovarian cancer may choose to have a risk-reducing oophorectomy (the removal of healthy ovaries so that cancer cannot grow in them). In high-risk women, this procedure has been shown to greatly decrease the risk of ovarian cancer. (See the PDQ summary on Ovarian, Fallopian Tube, and Primary Peritoneal Cancer Prevention for more information.)",
+      "source_url": "https://www.cancer.gov/types/ovarian/patient/ovarian-epithelial-treatment-pdq",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P13",
+      "category": "covered",
+      "question": "Qu'est-ce (ce sont) l'Angioedème hérité ?",
+      "original_question": "What is (are) Hereditary angioedema ?",
+      "topic": "Hereditary angioedema",
+      "question_type": "information",
+      "relevant_documents": [
+        "medquad_a1620d7655923fae1072"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "Hereditary angioedema (HAE) is an immune disorder characterized by recurrent episodes of severe swelling. The most commonly affected areas of the body are the limbs, face, intestinal tract, and airway. HAE is caused by low levels or improper function of a protein called C1 inhibitor which affects the blood vessels. This condition is inherited in an autosomal dominant pattern.",
+      "source_url": "https://rarediseases.info.nih.gov/gard/5979/hereditary-angioedema",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P14",
+      "category": "covered",
+      "question": "Quels sont les symptômes de la Disease du foie polykystique ?",
+      "original_question": "What are the symptoms of Polycystic liver disease ?",
+      "topic": "Polycystic liver disease",
+      "question_type": "symptoms",
+      "relevant_documents": [
+        "medquad_9348c02bb3e94c93a502"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "What are the signs and symptoms of Polycystic liver disease? The Human Phenotype Ontology provides the following list of signs and symptoms for Polycystic liver disease. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Hepatomegaly 90% Polycystic kidney dysplasia 50% Abdominal pain 7.5% Abnormality of the pancreas 7.5% Aneurysm 7.5% Elevated alkaline phosphatase 7.5% Feeding difficulties in infancy 7.5% Gastrointestinal hemorrhage 7.5% Respiratory insufficiency 7.5% Abdominal distention - Abnormality of the cardiovascular system - Abnormality of the nervous system - Ascites - Autosomal dominant inheritance - Back pain - Increased total bilirubin - Polycystic liver disease - Renal cyst - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+      "source_url": "https://rarediseases.info.nih.gov/gard/9457/polycystic-liver-disease",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "P15",
+      "category": "covered",
+      "question": "Quelles sont les causes de l'esophage barrett ?",
+      "original_question": "What causes Barrett esophagus ?",
+      "topic": "Barrett esophagus",
+      "question_type": "causes",
+      "relevant_documents": [
+        "medquad_16a9340144c185b6076a"
+      ],
+      "expected_statuses": [
+        "answered"
+      ],
+      "reference_text": "What causes Barrett esophagus? The exact underlying cause of Barrett esophagus is unknown. However, certain factors are known to increase the risk of developing the condition. These include: Long-standing gastroesophageal reflux disease (GERD) Obesity (specifically high levels of belly fat) Smoking Factors that may decrease the risk include having a Helicobacter pylori (H. pylori) infection; frequent use of aspirin or other nonsteroidal anti-inflammatory drugs; and a diet high in fruits, vegetables, and certain vitamins.",
+      "source_url": "https://rarediseases.info.nih.gov/gard/20/barrett-esophagus",
+      "reviewed": false,
+      "question_method": "ollama_translation_to_review"
+    },
+    {
+      "id": "M01",
+      "category": "missing_personal_information",
+      "question": "Quelle était la valeur exacte de ma glycémie lors de ma dernière prise de sang ?",
+      "relevant_documents": [],
+      "expected_statuses": [
+        "abstain",
+        "clarify",
+        "personal"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "M02",
+      "category": "missing_personal_information",
+      "question": "Quelle tension artérielle a été mesurée pendant ma dernière consultation ?",
+      "relevant_documents": [],
+      "expected_statuses": [
+        "abstain",
+        "clarify",
+        "personal"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "M03",
+      "category": "missing_personal_information",
+      "question": "Quel résultat figure sur mon dernier test respiratoire ?",
+      "relevant_documents": [],
+      "expected_statuses": [
+        "abstain",
+        "clarify",
+        "personal"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "M04",
+      "category": "missing_personal_information",
+      "question": "Quelle est la date de mon prochain rendez-vous médical ?",
+      "relevant_documents": [],
+      "expected_statuses": [
+        "abstain",
+        "clarify",
+        "personal"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "M05",
+      "category": "missing_personal_information",
+      "question": "Quel groupe sanguin est indiqué dans mon dossier médical ?",
+      "relevant_documents": [],
+      "expected_statuses": [
+        "abstain",
+        "clarify",
+        "personal"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "O01",
+      "category": "out_of_domain",
+      "question": "Quel est le prix d’un billet de train entre Fès et Casablanca ?",
+      "relevant_documents": [],
+      "expected_statuses": [
+        "abstain"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "O02",
+      "category": "out_of_domain",
+      "question": "Comment installer un jeu vidéo sur mon ordinateur ?",
+      "relevant_documents": [],
+      "expected_statuses": [
+        "abstain"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "O03",
+      "category": "out_of_domain",
+      "question": "Comment calculer la surface d’un triangle ?",
+      "relevant_documents": [],
+      "expected_statuses": [
+        "abstain"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "O04",
+      "category": "out_of_domain",
+      "question": "Quelle commande Git permet de créer une nouvelle branche ?",
+      "relevant_documents": [],
+      "expected_statuses": [
+        "abstain"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "O05",
+      "category": "out_of_domain",
+      "question": "Comment préparer une présentation PowerPoint ?",
+      "relevant_documents": [],
+      "expected_statuses": [
+        "abstain"
+      ],
+      "reviewed": false
+    }
+  ]
+}

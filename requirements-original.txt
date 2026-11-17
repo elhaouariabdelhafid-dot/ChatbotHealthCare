@@ -1,0 +1,6 @@
+# Python 3.11 ou 3.12. Versions du socle testées dans l'environnement de réalisation.
+numpy==2.3.5
+scikit-learn==1.8.0
+fastapi==0.141.1
+uvicorn==0.52.1
+httpx==0.28.1

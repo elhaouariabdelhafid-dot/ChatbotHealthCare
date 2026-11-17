@@ -1,0 +1,49 @@
+text,label
+Que signifie le diabète ?,definition
+Définis une maladie chronique,definition
+Explique ce terme médical,definition
+Quelle est la définition de l’asthme ?,definition
+C’est quoi la glycémie ?,definition
+Que veut dire hypertension ?,definition
+Explique la notion de prévention,definition
+Quelle est la signification du mot insuline ?,definition
+Quels sont les signes de l’asthme ?,symptomes
+Quels symptômes peut provoquer le diabète ?,symptomes
+Comment se manifeste cette maladie ?,symptomes
+Quels signes sont associés à une infection ?,symptomes
+Quels sont les symptômes généraux ?,symptomes
+Décris les manifestations habituelles,symptomes
+Quels signes peuvent apparaître ?,symptomes
+La toux est-elle un symptôme ?,symptomes
+Comment prévenir le diabète de type 2 ?,prevention
+Comment réduire le risque de maladie ?,prevention
+Quelles mesures de prévention existent ?,prevention
+Comment éviter les facteurs de risque ?,prevention
+Quels comportements aident à prévenir ?,prevention
+Quels gestes de prévention sont utiles ?,prevention
+Comment limiter le risque d’hypertension ?,prevention
+Quel est le rôle de la prévention ?,prevention
+Quelles sont les causes de l’asthme ?,causes
+Quels facteurs favorisent l’hypertension ?,causes
+Pourquoi cette maladie apparaît-elle ?,causes
+Quels sont les facteurs de risque ?,causes
+Quels éléments peuvent déclencher une crise ?,causes
+Quels facteurs sont associés au diabète ?,causes
+Quelle est l’origine de cette maladie ?,causes
+Pourquoi le risque augmente-t-il ?,causes
+Comment se mesure la glycémie ?,examens
+Quels examens permettent de détecter le diabète ?,examens
+Comment mesure-t-on la pression artérielle ?,examens
+Quel est le rôle d’une prise de sang ?,examens
+À quoi sert cet examen ?,examens
+Comment se déroule le dépistage ?,examens
+Quels tests sont utilisés ?,examens
+Explique le principe de la mesure,examens
+Comment coder en Python ?,hors_domaine
+Quelle est la météo demain ?,hors_domaine
+Donne une recette de gâteau,hors_domaine
+Quel est le score du match ?,hors_domaine
+Comment installer Linux ?,hors_domaine
+Raconte une blague,hors_domaine
+Quelle est la capitale du Japon ?,hors_domaine
+Comment réserver un billet d’avion ?,hors_domaine

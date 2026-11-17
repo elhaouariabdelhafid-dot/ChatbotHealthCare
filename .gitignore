@@ -1,0 +1,55 @@
+__pycache__/
+.venv/
+.env
+*.pyc
+data/external/
+artifacts/*.npy
+artifacts/chunks.json
+artifacts/manifest.json
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Données volumineuses
+data/external/
+data/processed/
+data/raw/
+artifacts/
+*.faiss
+*.npy
+*.npz
+*.pkl
+*.joblib
+*.gguf
+*.safetensors
+*.pt
+*.pth
+
+# Fichiers temporaires
+*.bak
+*.backup
+*.log
+.DS_Store
+
+# Métadonnées Windows
+*:Zone.Identifier
+
+# Sauvegardes temporaires
+*.bak
+*.bak.*
+*.backup
+*.backup.*
+config.before_*.json
+*backup*.csv

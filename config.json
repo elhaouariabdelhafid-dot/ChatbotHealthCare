@@ -1,0 +1,16 @@
+{
+  "corpus": "data/external/medquad_experimental.jsonl",
+  "intents": "data/intents.csv",
+  "retriever": "dense",
+  "embedding_model": "intfloat/multilingual-e5-small",
+  "lexical_threshold": 0.18,
+  "dense_threshold": 0.8,
+  "top_k": 3,
+  "chunk_words": 140,
+  "overlap_words": 25,
+  "generation": "ollama",
+  "ollama_url": "http://127.0.0.1:11434",
+  "ollama_model": "qwen2.5:7b",
+  "timeout_seconds": 180,
+  "max_question_chars": 1200
+}

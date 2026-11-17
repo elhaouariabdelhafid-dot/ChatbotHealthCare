@@ -1,0 +1,21 @@
+id,question_originale,question_reformulee,fidele_oui_non,commentaire
+Q01,Décris le syndrome de Muir-Torre.,What is the Muir-Torre syndrome?,oui,Acceptable pour le retrieval - audit préliminaire
+Q02,Quels gènes peuvent provoquer le syndrome de Muir-Torre ?,Which genes can cause the Muir-Torre syndrome?,oui,Acceptable pour le retrieval - audit préliminaire
+Q03,Comment réduire le risque de cancer du sein ?,How can I reduce the risk of breast cancer?,oui,Acceptable pour le retrieval - audit préliminaire
+Q04,Comment prévenir le cancer colorectal ?,How can colorectal cancer be prevented?,oui,Acceptable pour le retrieval - audit préliminaire
+Q05,Quels signes peut provoquer la pyomyosite ?,What symptoms can occur with pyomyositis?,oui,Acceptable pour le retrieval - audit préliminaire
+Q06,Quels sont les symptômes de la polymyosite ?,What are the symptoms of polymyositis?,oui,Acceptable pour le retrieval - audit préliminaire
+Q07,Comment prévenir le cancer anal ?,How can anal cancer be prevented?,oui,Acceptable pour le retrieval - audit préliminaire
+Q08,How can oral cavity and oropharyngeal cancer be prevented?,How can oral cavity and oropharyngeal cancer be prevented?,oui,Acceptable pour le retrieval - audit préliminaire
+Q09,Que sait-on de la prévention du cancer du foie ?,What is known about preventing liver cancer?,oui,Acceptable pour le retrieval - audit préliminaire
+Q10,What is diabetic heart disease?,What is diabetic cardiomyopathy?,non,Concept médical changé : diabetic heart disease vers diabetic cardiomyopathy.
+Q11,Quelles informations les documents donnent-ils sur la prévention du cancer du sein ?,What do medical documents provide regarding breast cancer prevention?,oui,Acceptable pour le retrieval - audit préliminaire
+Q12,Quelles mesures protectrices permettent de diminuer le risque de cancer mammaire ?,What protective measures can reduce the risk of breast cancer?,oui,Acceptable pour le retrieval - audit préliminaire
+Q13,Quelles manifestations cliniques retrouve-t-on chez les personnes atteintes de pyomyosite ?,What clinical manifestations are observed in patients with pyomyositis?,oui,Acceptable pour le retrieval - audit préliminaire
+Q14,Comment reconnaître les symptômes d'une polymyosite ?,How are the symptoms of polymyositis recognized?,oui,Acceptable pour le retrieval - audit préliminaire
+Q15,"Quelle maladie associe des tumeurs sébacées de la peau à certains cancers internes, dans le cadre du syndrome de Lynch ?",What internal cancer is associated with sebaceous skin tumors in patients with Lynch syndrome?,non,Intention modifiée : identification du syndrome vers identification d'un cancer.
+Q16,Quelles mutations génétiques sont associées à Muir-Torre ?,What genetic mutations are associated with Muir-Torre syndrome?,oui,Acceptable pour le retrieval - audit préliminaire
+Q17,Quels moyens existent pour diminuer le risque de développer un cancer du côlon ou du rectum ?,What are the methods to reduce the risk of developing colorectal cancer?,oui,Acceptable pour le retrieval - audit préliminaire
+Q18,Peut-on réduire le risque de cancer de la cavité buccale et de l'oropharynx ?,Can reducing tobacco and alcohol use lower the risk of oral cavity and oropharyngeal cancers?,non,Ajout de facteurs non demandés : tabac et alcool.
+Q19,Quelles sont les mesures de prévention du cancer hépatocellulaire ?,What are the prevention measures for hepatocellular carcinoma?,oui,Acceptable pour le retrieval - audit préliminaire
+Q20,Quelles mesures peuvent contribuer à prévenir les cancers de la région anale ?,What measures can contribute to preventing anal cancer?,oui,Acceptable pour le retrieval - audit préliminaire
