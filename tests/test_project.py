@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 from fastapi.testclient import TestClient
-from healthbot.settings import settings
+from healthbot.settings import settings, ROOT
 from healthbot.engine import HealthBot
 from healthbot.nlp import safety_route,entities
 from healthbot.corpus import chunk_documents,load_documents
@@ -19,6 +19,8 @@ class ProjectTests(unittest.TestCase):
             **settings(),
             'generation': 'extractive',
             'retriever': 'lexical',
+            'reranking_enabled': False,
+            'corpus': str(ROOT / 'data/demo_corpus.jsonl'),
         }
         cls.bot = HealthBot(cls.cfg)
 

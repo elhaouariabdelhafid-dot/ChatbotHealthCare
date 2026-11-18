@@ -1,0 +1,94 @@
+{
+  "trace_id": "ab82df51499e447e81da37b97c6bf6d2",
+  "answer": "Les signes et symptômes incluent l'areflexie et la hypotonie musculaire. [2]",
+  "status": "answered",
+  "mode": "ollama",
+  "sources": [
+    {
+      "citation": 1,
+      "id": "medquad_e277a26ae64d9030e0b2:1",
+      "document_id": "medquad_e277a26ae64d9030e0b2",
+      "title": "What are the symptoms of Hypertrophic neuropathy of Dejerine-Sottas ?",
+      "url": "https://rarediseases.info.nih.gov/gard/9204/hypertrophic-neuropathy-of-dejerine-sottas",
+      "text": "nerve changes - Hyporeflexia - Increased CSF protein - Infantile onset - Kyphoscoliosis - Motor delay - Muscular hypotonia - Onion bulb formation - Pes cavus - Segmental peripheral demyelination/remyelination - Sensory ataxia - Steppage gait - Ulnar claw - Variable expressivity - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of",
+      "language": "en",
+      "content_kind": "medquad",
+      "retrieved_at": "inconnue"
+    },
+    {
+      "citation": 2,
+      "id": "medquad_e277a26ae64d9030e0b2:0",
+      "document_id": "medquad_e277a26ae64d9030e0b2",
+      "title": "What are the symptoms of Hypertrophic neuropathy of Dejerine-Sottas ?",
+      "url": "https://rarediseases.info.nih.gov/gard/9204/hypertrophic-neuropathy-of-dejerine-sottas",
+      "text": "What are the signs and symptoms of Hypertrophic neuropathy of Dejerine-Sottas? The Human Phenotype Ontology provides the following list of signs and symptoms for Hypertrophic neuropathy of Dejerine-Sottas. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Nystagmus 5% Areflexia - Autosomal dominant inheritance - Autosomal recessive inheritance - Decreased motor nerve conduction velocity - Decreased number of peripheral myelinated nerve fibers - Distal amyotrophy - Distal sensory impairment - Foot dorsiflexor weakness - Hammertoe - Heterogeneous - Hypertrophic nerve changes - Hyporeflexia - Increased CSF protein - Infantile onset - Kyphoscoliosis - Motor delay - Muscular hypotonia - Onion bulb formation - Pes",
+      "language": "en",
+      "content_kind": "medquad",
+      "retrieved_at": "inconnue"
+    },
+    {
+      "citation": 3,
+      "id": "medquad_1579759d0e7313f58881:0",
+      "document_id": "medquad_1579759d0e7313f58881",
+      "title": "What is (are) Hypertrophic neuropathy of Dejerine-Sottas ?",
+      "url": "https://rarediseases.info.nih.gov/gard/9204/hypertrophic-neuropathy-of-dejerine-sottas",
+      "text": "Hypertrophic neuropathy of Dejerine-Sottas (Dejerine-Sottas syndrome) is a term sometimes used to describe a severe, early childhood form of Charcot-Marie-Tooth disease (sometimes called type 3) that is characterized by sensory loss with ataxia in the limbs furthest from the body and pes cavus with progression towards the limbs closest to the body. Depending on the specific gene that is altered, this severe, early onset form of the disorder may also be classified as type 1 or type 4. Dejerine-Sottas syndrome has been associated with mutations in the MPZ, PMP22, EGR2, and PRX genes. Autosomal dominant and autosomal recessive inheritance have been described.",
+      "language": "en",
+      "content_kind": "medquad",
+      "retrieved_at": "inconnue"
+    }
+  ],
+  "intent": {
+    "label": "hors_domaine",
+    "score": 0.176,
+    "method": "TF-IDF + régression logistique (jeu pédagogique)"
+  },
+  "entities": [],
+  "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+  "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+  "retrieval": {
+    "reranking_status": "applied",
+    "candidate_count": 5,
+    "selected_count": 3,
+    "rerank_ms": 15616.55,
+    "retrieval_ms": 16236.38,
+    "candidate_order": [
+      {
+        "id": "medquad_e277a26ae64d9030e0b2:1",
+        "document_id": "medquad_e277a26ae64d9030e0b2",
+        "accepted": true,
+        "dense_score": 0.9015719294548035,
+        "reranker_score": 4.8772454261779785
+      },
+      {
+        "id": "medquad_e277a26ae64d9030e0b2:0",
+        "document_id": "medquad_e277a26ae64d9030e0b2",
+        "accepted": true,
+        "dense_score": 0.9068683385848999,
+        "reranker_score": 2.8977668285369873
+      },
+      {
+        "id": "medquad_1579759d0e7313f58881:0",
+        "document_id": "medquad_1579759d0e7313f58881",
+        "accepted": true,
+        "dense_score": 0.9198898673057556,
+        "reranker_score": 1.884475588798523
+      },
+      {
+        "id": "medquad_e277a26ae64d9030e0b2:2",
+        "document_id": "medquad_e277a26ae64d9030e0b2",
+        "accepted": true,
+        "dense_score": 0.8666961193084717,
+        "reranker_score": -2.9371213912963867
+      },
+      {
+        "id": "medquad_3ab593313fd573b16123:1",
+        "document_id": "medquad_3ab593313fd573b16123",
+        "accepted": true,
+        "dense_score": 0.8270505666732788,
+        "reranker_score": -8.636676788330078
+      }
+    ]
+  },
+  "latency_ms": 372457.45
+}

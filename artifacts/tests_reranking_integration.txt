@@ -1,0 +1,42 @@
+test_api (test_project.ProjectTests) ... ok
+test_api_invalid_input (test_project.ProjectTests) ... ok
+test_arabic_explicit_limit (test_project.ProjectTests) ... ok
+test_chunks_cover_words (test_project.ProjectTests) ... ok
+test_citation_validation (test_project.ProjectTests) ... ok
+test_clarification (test_project.ProjectTests) ... ok
+test_configuration (test_project.ProjectTests) ... ok
+test_definition_returns_source (test_project.ProjectTests) ... ok
+test_dense_and_hybrid_with_fake_encoder (test_project.ProjectTests) ... ok
+test_empty (test_project.ProjectTests) ... ok
+test_entity_offsets_and_negation (test_project.ProjectTests) ... ok
+test_invalid_chunk_parameters (test_project.ProjectTests) ... ok
+test_meddialog_redacts_contact (test_project.ProjectTests) ... ok
+test_medquad_import_filters_and_keeps_pending (test_project.ProjectTests) ... ok
+test_off_topic (test_project.ProjectTests) ... ok
+test_ollama_abstention (test_project.ProjectTests) ... ok
+test_ollama_bad_citation_fallback (test_project.ProjectTests) ... ok
+test_ollama_malformed_response (test_project.ProjectTests) ... ok
+test_ollama_offline_fallback (test_project.ProjectTests) ... ok
+test_ollama_valid_response (test_project.ProjectTests) ... ok
+test_personal_dose (test_project.ProjectTests) ... ok
+test_safety_bypasses_retrieval (test_project.ProjectTests) ... ok
+test_static_ui (test_project.ProjectTests) ... ok
+test_too_long (test_project.ProjectTests) ... ok
+test_unknown_medical_topic_abstains (test_project.ProjectTests) ... ok
+test_urgent_variants (test_project.ProjectTests) ... ok
+test_disabled_uses_original_search (test_reranking.RerankingTests) ... ok
+test_failure_falls_back_to_e5_explicitly (test_reranking.RerankingTests) ... ok
+test_generator_abstention_preserved (test_reranking.RerankingTests) ... ok
+test_invalid_configuration (test_reranking.RerankingTests) ... ok
+test_invalid_scores_rejected (test_reranking.RerankingTests) ... ok
+test_lazy_load_and_preserve_scores_and_ties (test_reranking.RerankingTests) ... ok
+test_no_accepted_skips_model (test_reranking.RerankingTests) ... ok
+test_rerank_then_topk_then_filter (test_reranking.RerankingTests) ... ok
+test_routes_bypass_retrieval_and_reranker (test_reranking.RerankingTests) ... ok
+test_settings_reads_new_keys (test_reranking.RerankingTests) ... ok
+test_sources_follow_reranked_order (test_reranking.RerankingTests) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 0.183s
+
+OK

@@ -12,5 +12,8 @@
   "ollama_url": "http://127.0.0.1:11434",
   "ollama_model": "qwen2.5:7b",
   "timeout_seconds": 180,
-  "max_question_chars": 1200
+  "max_question_chars": 1200,
+  "reranking_enabled": true,
+  "reranking_candidates": 5,
+  "reranking_model": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1"
 }
