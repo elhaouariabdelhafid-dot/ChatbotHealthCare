@@ -19,7 +19,7 @@
   "compact_prompt": false,
   "groq_model": "openai/gpt-oss-120b",
   "groq_timeout_seconds": 20,
-  "groq_max_completion_tokens": 4096,
+  "groq_max_completion_tokens": 2048,
   "groq_tpm": 8000,
   "groq_rpm": 30,
   "groq_max_concurrent": 2
