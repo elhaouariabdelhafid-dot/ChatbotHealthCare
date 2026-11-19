@@ -1,0 +1,3245 @@
+{
+  "experiment": "Qwen 7B, ancien prompt, E5 + reranking, top_k=2",
+  "dataset_sha256": "c4c26803ff259f3366ed3b58a7f6209262c078f413bea14a82b6a13e2412cac9",
+  "corpus_sha256": "4191c157bfd8c45f885a0f4905db513dbb31f6512707cfaca0e6205b1e8ba6a0",
+  "configuration": {
+    "corpus": "/home/hafid/ChatBotHealthCare/data/external/medquad_experimental.jsonl",
+    "intents": "/home/hafid/ChatBotHealthCare/data/intents.csv",
+    "retriever": "dense",
+    "embedding_model": "intfloat/multilingual-e5-small",
+    "lexical_threshold": 0.18,
+    "dense_threshold": 0.8,
+    "top_k": 2,
+    "chunk_words": 140,
+    "overlap_words": 25,
+    "generation": "ollama",
+    "ollama_url": "http://127.0.0.1:11434",
+    "ollama_model": "qwen2.5:7b",
+    "timeout_seconds": 600,
+    "max_question_chars": 1200,
+    "reranking_enabled": true,
+    "reranking_candidates": 5,
+    "reranking_model": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+    "compact_prompt": false
+  },
+  "code_sha256": {
+    "healthbot/engine.py": "149aa3d38eb57d37680e031b34f595b1b543d04416baeb57fc83ad2b4a6020c2",
+    "healthbot/generation.py": "30ea77a85dbd4c3f676619bf29294b9be46c3b1e3ae1312280424433b39788dd",
+    "healthbot/retrieval.py": "d56a4958549c386974260e3ef9518b522d573aa56e21c33f54d1f16db803a628",
+    "healthbot/reranking.py": "d1dbf46e2e573de99d9af79b88cae02c53a2a594cfe759a7b9871eb172e38d6a"
+  },
+  "limitations": [
+    "Jeu de développement déjà utilisé, pas un test indépendant.",
+    "Statut conforme ne signifie pas réponse fidèle ou correcte.",
+    "Latence influencée par le chargement et les caches."
+  ],
+  "completed": true,
+  "details": [
+    {
+      "id": "N01",
+      "category": "covered",
+      "question": "Quels tissus sont touchés par le syndrome d’Ehlers-Danlos, selon le document ?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 178.031,
+      "result": {
+        "trace_id": "e524b371340c4281b402c808310416c1",
+        "answer": "Le syndrome d’Ehlers-Danlos affecte les tissus conjonctifs qui soutiennent la peau, les os, les vaisseaux sanguins et de nombreux autres organes et tissus. [1]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_3ab593313fd573b16123:0",
+            "document_id": "medquad_3ab593313fd573b16123",
+            "title": "What is (are) Ehlers-Danlos syndrome ?",
+            "url": "https://ghr.nlm.nih.gov/condition/ehlers-danlos-syndrome",
+            "text": "Ehlers-Danlos syndrome is a group of disorders that affect the connective tissues that support the skin, bones, blood vessels, and many other organs and tissues. Defects in connective tissues cause the signs and symptoms of Ehlers-Danlos syndrome, which vary from mildly loose joints to life-threatening complications. Previously, there were more than 10 recognized types of Ehlers-Danlos syndrome, differentiated by Roman numerals. In 1997, researchers proposed a simpler classification that reduced the number of major types to six and gave them descriptive names: the classical type (formerly types I and II), the hypermobility type (formerly type III), the vascular type (formerly type IV), the kyphoscoliosis type (formerly type VIA), the arthrochalasia type (formerly types VIIA and VIIB), and the dermatosparaxis type (formerly type VIIC). This six-type classification, known as the Villefranche nomenclature, is still commonly used. The types are distinguished by",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_588bff8134658a178551:0",
+            "document_id": "medquad_588bff8134658a178551",
+            "title": "What are the symptoms of Ehlers-Danlos syndrome, progeroid type ?",
+            "url": "https://rarediseases.info.nih.gov/gard/9991/ehlers-danlos-syndrome-progeroid-type",
+            "text": "What are the signs and symptoms of Ehlers-Danlos syndrome, progeroid type? Ehlers-Danlos syndrome refers to a group of connective tissue disorders characterized by stretchy or kneadable skin, double jointedness, and delayed healing of skin wounds. In addition to these traits, individuals with the progeroid type have thin curly hair, sparse eyebrows and eyelashes, loose elastic skin on the face, and may also have uneven facial features. Although progeroid means \"appearance similar to old age\", individuals with progeroid Ehlers-Danlos syndrome do not actually have premature aging and are not expected to have a shortened life span. Other symptoms may include poor muscle tone, fragile bones from low bone mineral density, abnormal teeth, and infection of gums around the teeth. Children who are affected may have delayed growth, which can result in short stature as an adult (less than 152cm). Mild intellectual",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "examens",
+          "score": 0.202,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 5099.94,
+          "retrieval_ms": 5485.34,
+          "candidate_order": [
+            {
+              "id": "medquad_3ab593313fd573b16123:0",
+              "document_id": "medquad_3ab593313fd573b16123",
+              "accepted": true,
+              "dense_score": 0.8553465008735657,
+              "reranker_score": 5.512847423553467
+            },
+            {
+              "id": "medquad_588bff8134658a178551:0",
+              "document_id": "medquad_588bff8134658a178551",
+              "accepted": true,
+              "dense_score": 0.850391685962677,
+              "reranker_score": 3.6727757453918457
+            },
+            {
+              "id": "medquad_588bff8134658a178551:1",
+              "document_id": "medquad_588bff8134658a178551",
+              "accepted": true,
+              "dense_score": 0.8455539345741272,
+              "reranker_score": 1.253045916557312
+            },
+            {
+              "id": "medquad_3ab593313fd573b16123:3",
+              "document_id": "medquad_3ab593313fd573b16123",
+              "accepted": true,
+              "dense_score": 0.8468718528747559,
+              "reranker_score": 0.9321256279945374
+            },
+            {
+              "id": "medquad_3ab593313fd573b16123:2",
+              "document_id": "medquad_3ab593313fd573b16123",
+              "accepted": true,
+              "dense_score": 0.8553663492202759,
+              "reranker_score": 0.7950303554534912
+            }
+          ]
+        },
+        "latency_ms": 178020.08
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_3ab593313fd573b16123:0",
+          "title": "What is (are) Ehlers-Danlos syndrome ?",
+          "text": "Ehlers-Danlos syndrome is a group of disorders that affect the connective tissues that support the skin, bones, blood vessels, and many other organs and tissues. Defects in connective tissues cause the signs and symptoms of Ehlers-Danlos syndrome, which vary from mildly loose joints to life-threatening complications. Previously, there were more than 10 recognized types of Ehlers-Danlos syndrome, differentiated by Roman numerals. In 1997, researchers proposed a simpler classification that reduced the number of major types to six and gave them descriptive names: the classical type (formerly types I and II), the hypermobility type (formerly type III), the vascular type (formerly type IV), the kyphoscoliosis type (formerly type VIA), the arthrochalasia type (formerly types VIIA and VIIB), and the dermatosparaxis type (formerly type VIIC). This six-type classification, known as the Villefranche nomenclature, is still commonly used. The types are distinguished by",
+          "source_url": "https://ghr.nlm.nih.gov/condition/ehlers-danlos-syndrome",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "Ehlers-Danlos syndrome",
+          "source_file": "3_GHR_QA/0000313.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_3ab593313fd573b16123",
+          "score": 0.8553465008735657,
+          "lexical_score": 0.12469889874110532,
+          "dense_score": 0.8553465008735657,
+          "accepted": true,
+          "e5_rank": 2,
+          "reranker_score": 5.512847423553467
+        },
+        {
+          "id": "medquad_588bff8134658a178551:0",
+          "title": "What are the symptoms of Ehlers-Danlos syndrome, progeroid type ?",
+          "text": "What are the signs and symptoms of Ehlers-Danlos syndrome, progeroid type? Ehlers-Danlos syndrome refers to a group of connective tissue disorders characterized by stretchy or kneadable skin, double jointedness, and delayed healing of skin wounds. In addition to these traits, individuals with the progeroid type have thin curly hair, sparse eyebrows and eyelashes, loose elastic skin on the face, and may also have uneven facial features. Although progeroid means \"appearance similar to old age\", individuals with progeroid Ehlers-Danlos syndrome do not actually have premature aging and are not expected to have a shortened life span. Other symptoms may include poor muscle tone, fragile bones from low bone mineral density, abnormal teeth, and infection of gums around the teeth. Children who are affected may have delayed growth, which can result in short stature as an adult (less than 152cm). Mild intellectual",
+          "source_url": "https://rarediseases.info.nih.gov/gard/9991/ehlers-danlos-syndrome-progeroid-type",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Ehlers-Danlos syndrome, progeroid type",
+          "source_file": "2_GARD_QA/0002061.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_588bff8134658a178551",
+          "score": 0.850391685962677,
+          "lexical_score": 0.10699281599915178,
+          "dense_score": 0.850391685962677,
+          "accepted": true,
+          "e5_rank": 3,
+          "reranker_score": 3.6727757453918457
+        }
+      ],
+      "reference_text": "Ehlers-Danlos syndrome is a group of disorders that affect the connective tissues that support the skin, bones, blood vessels, and many other organs and tissues. Defects in connective tissues cause the signs and symptoms of Ehlers-Danlos syndrome, which vary from mildly loose joints to life-threatening complications.  Previously, there were more than 10 recognized types of Ehlers-Danlos syndrome, differentiated by Roman numerals. In 1997, researchers proposed a simpler classification that reduced the number of major types to six and gave them descriptive names: the classical type (formerly types I and II), the hypermobility type (formerly type III), the vascular type (formerly type IV), the kyphoscoliosis type (formerly type VIA), the arthrochalasia type (formerly types VIIA and VIIB), and the dermatosparaxis type (formerly type VIIC). This six-type classification, known as the Villefranche nomenclature, is still commonly used. The types are distinguished by their signs and symptoms, their underlying genetic causes, and their patterns of inheritance. Since 1997, several additional forms of the condition have been described. These additional forms appear to be rare, affecting a small number of families, and most have not been well characterized.  Although all types of Ehlers-Danlos syndrome affect the joints and skin, additional features vary by type. An unusually large range of joint movement (hypermobility) occurs with most forms of Ehlers-Danlos syndrome, particularly the hypermobility type. Infants with hypermobile joints often have weak muscle tone, which can delay the development of motor skills such as sitting, standing, and walking. The loose joints are unstable and prone to dislocation and chronic pain. Hypermobility and dislocations of both hips at birth are characteristic features in infants with the arthrochalasia type of Ehlers-Danlos syndrome.  Many people with Ehlers-Danlos syndrome have soft, velvety skin that is highly stretchy (elastic) and fragile. Affected individuals tend to bruise easily, and some types of the condition also cause abnormal scarring. People with the classical form of Ehlers-Danlos syndrome experience wounds that split open with little bleeding and leave scars that widen over time to create characteristic \"cigarette paper\" scars. The dermatosparaxis type of the disorder is characterized by skin that sags and wrinkles. Extra (redundant) folds of skin may be present as affected children get older.  Some forms of Ehlers-Danlos syndrome, notably the vascular type and to a lesser extent the kyphoscoliosis and classical types, can involve serious and potentially life-threatening complications due to unpredictable tearing (rupture) of blood vessels. This rupture can cause internal bleeding, stroke, and shock. The vascular type of Ehlers-Danlos syndrome is also associated with an increased risk of organ rupture, including tearing of the intestine and rupture of the uterus (womb) during pregnancy. People with the kyphoscoliosis form of Ehlers-Danlos syndrome experience severe, progressive curvature of the spine that can interfere with breathing.",
+      "evidence_quotes": [
+        "connective tissues that support the skin, bones, blood vessels"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N02",
+      "category": "covered",
+      "question": "Which lipid abnormalities are listed for hyperlipoproteinemia type 5?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": false,
+      "wall_seconds": 34.453,
+      "result": {
+        "trace_id": "5649910b58054137a4c450a19c6ab809",
+        "answer": "Les passages disponibles ne suffisent pas pour répondre à cette question.",
+        "status": "abstain",
+        "mode": "abstain",
+        "sources": [],
+        "intent": {
+          "label": "prevention",
+          "score": 0.201,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 2199.3,
+          "retrieval_ms": 3159.69,
+          "candidate_order": [
+            {
+              "id": "medquad_5b009337dbf7c2660349:0",
+              "document_id": "medquad_5b009337dbf7c2660349",
+              "accepted": true,
+              "dense_score": 0.8954216241836548,
+              "reranker_score": 0.9244234561920166
+            },
+            {
+              "id": "medquad_5b009337dbf7c2660349:1",
+              "document_id": "medquad_5b009337dbf7c2660349",
+              "accepted": true,
+              "dense_score": 0.8537633419036865,
+              "reranker_score": -0.7334933876991272
+            },
+            {
+              "id": "medquad_70277050d3e631696988:0",
+              "document_id": "medquad_70277050d3e631696988",
+              "accepted": true,
+              "dense_score": 0.8550885915756226,
+              "reranker_score": -2.7365527153015137
+            },
+            {
+              "id": "medquad_685b5916bdca19abd7df:1",
+              "document_id": "medquad_685b5916bdca19abd7df",
+              "accepted": true,
+              "dense_score": 0.8495985865592957,
+              "reranker_score": -4.156867504119873
+            },
+            {
+              "id": "medquad_6ff8ae81b23c53743ce1:1",
+              "document_id": "medquad_6ff8ae81b23c53743ce1",
+              "accepted": true,
+              "dense_score": 0.8603458404541016,
+              "reranker_score": -6.398041725158691
+            }
+          ]
+        },
+        "latency_ms": 34443.99
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_5b009337dbf7c2660349:0",
+          "title": "What are the symptoms of Hyperlipoproteinemia type 5 ?",
+          "text": "What are the signs and symptoms of Hyperlipoproteinemia type 5? The Human Phenotype Ontology provides the following list of signs and symptoms for Hyperlipoproteinemia type 5. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Autosomal dominant inheritance - Hyperchylomicronemia - Hypoalphalipoproteinemia - Hypobetalipoproteinemia - Increased circulating very-low-density lipoprotein cholesterol - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that",
+          "source_url": "https://rarediseases.info.nih.gov/gard/6704/hyperlipoproteinemia-type-5",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Hyperlipoproteinemia type 5",
+          "source_file": "2_GARD_QA/0003006.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_5b009337dbf7c2660349",
+          "score": 0.8954216241836548,
+          "lexical_score": 0.33350636619555696,
+          "dense_score": 0.8954216241836548,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": 0.9244234561920166
+        },
+        {
+          "id": "medquad_5b009337dbf7c2660349:1",
+          "title": "What are the symptoms of Hyperlipoproteinemia type 5 ?",
+          "text": "rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+          "source_url": "https://rarediseases.info.nih.gov/gard/6704/hyperlipoproteinemia-type-5",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Hyperlipoproteinemia type 5",
+          "source_file": "2_GARD_QA/0003006.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_5b009337dbf7c2660349",
+          "score": 0.8537633419036865,
+          "lexical_score": 0.19130248843172662,
+          "dense_score": 0.8537633419036865,
+          "accepted": true,
+          "e5_rank": 4,
+          "reranker_score": -0.7334933876991272
+        }
+      ],
+      "reference_text": "What are the signs and symptoms of Hyperlipoproteinemia type 5? The Human Phenotype Ontology provides the following list of signs and symptoms for Hyperlipoproteinemia type 5. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Autosomal dominant inheritance - Hyperchylomicronemia - Hypoalphalipoproteinemia - Hypobetalipoproteinemia - Increased circulating very-low-density lipoprotein cholesterol - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+      "evidence_quotes": [
+        "Hyperchylomicronemia",
+        "Increased circulating very-low-density lipoprotein cholesterol"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N03",
+      "category": "covered",
+      "question": "La cause du carcinome adénoïde kystique est-elle connue dans le document ?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 36.709,
+      "result": {
+        "trace_id": "cf87b30cd73a4f7ba45218169445845d",
+        "answer": "La cause du carcinome adénoïde kystique (ACC) n'est pas encore connue et aucun facteur génétique ou environnemental spécifique n'a été identifié. [1]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_bda8f653bd73237ade89:0",
+            "document_id": "medquad_bda8f653bd73237ade89",
+            "title": "What causes Adenoid cystic carcinoma ?",
+            "url": "https://rarediseases.info.nih.gov/gard/5743/adenoid-cystic-carcinoma",
+            "text": "What causes adenoid cystic carcinoma? The underlying cause of adenoid cystic carcinoma (ACC) is not yet known, and no strong genetic or environmental risk factors specific to ACC have been identified. Researchers believe that a combination of various genetic and environmental factors probably interact to ultimately cause a person to develop specific types of cancers. There is ongoing research to learn more about the many factors that contribute to the development of cancer. Cancer is at least partly due to acquired (not inherited) damage or changes to the DNA in certain cells. For example, various studies have shown that chromosomal abnormalities and genetic deletions are present in samples of ACC. However, these genetic abnormalities are present only in the cancer cells, not in the cells with the genetic material that is passed on to offspring (the egg and sperm cells).",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_e49b3bddf1467b848db4:0",
+            "document_id": "medquad_e49b3bddf1467b848db4",
+            "title": "What are the symptoms of Adenocarcinoma of the appendix ?",
+            "url": "https://rarediseases.info.nih.gov/gard/10564/adenocarcinoma-of-the-appendix",
+            "text": "What are the symptoms of adenocarcinoma of the appendix? The most common clinical symptom is acute appendicitis. Other symptoms include a palpable abdominal mass, ascites (fluid buildup), peritonitis (inflammation of the membrane lining the abdominal cavity) due to a perforated appendix, and non-specific gastrointestinal or genitourinary symptoms such as bloating, vague abdominal pain, and tenderness.",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "hors_domaine",
+          "score": 0.193,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 624.94,
+          "retrieval_ms": 784.59,
+          "candidate_order": [
+            {
+              "id": "medquad_bda8f653bd73237ade89:0",
+              "document_id": "medquad_bda8f653bd73237ade89",
+              "accepted": true,
+              "dense_score": 0.8457241058349609,
+              "reranker_score": 5.913309097290039
+            },
+            {
+              "id": "medquad_e49b3bddf1467b848db4:0",
+              "document_id": "medquad_e49b3bddf1467b848db4",
+              "accepted": true,
+              "dense_score": 0.8118939399719238,
+              "reranker_score": -4.033156871795654
+            },
+            {
+              "id": "medquad_a1ddd5aedae85326d590:0",
+              "document_id": "medquad_a1ddd5aedae85326d590",
+              "accepted": true,
+              "dense_score": 0.8065205216407776,
+              "reranker_score": -4.4736833572387695
+            },
+            {
+              "id": "medquad_eb46f0108ee061d99698:1",
+              "document_id": "medquad_eb46f0108ee061d99698",
+              "accepted": true,
+              "dense_score": 0.8042988181114197,
+              "reranker_score": -6.9387335777282715
+            },
+            {
+              "id": "medquad_d202cb5e1c233290e64a:1",
+              "document_id": "medquad_d202cb5e1c233290e64a",
+              "accepted": true,
+              "dense_score": 0.8020291924476624,
+              "reranker_score": -7.209387302398682
+            }
+          ]
+        },
+        "latency_ms": 36708.8
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_bda8f653bd73237ade89:0",
+          "title": "What causes Adenoid cystic carcinoma ?",
+          "text": "What causes adenoid cystic carcinoma? The underlying cause of adenoid cystic carcinoma (ACC) is not yet known, and no strong genetic or environmental risk factors specific to ACC have been identified. Researchers believe that a combination of various genetic and environmental factors probably interact to ultimately cause a person to develop specific types of cancers. There is ongoing research to learn more about the many factors that contribute to the development of cancer. Cancer is at least partly due to acquired (not inherited) damage or changes to the DNA in certain cells. For example, various studies have shown that chromosomal abnormalities and genetic deletions are present in samples of ACC. However, these genetic abnormalities are present only in the cancer cells, not in the cells with the genetic material that is passed on to offspring (the egg and sperm cells).",
+          "source_url": "https://rarediseases.info.nih.gov/gard/5743/adenoid-cystic-carcinoma",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "causes",
+          "focus": "Adenoid cystic carcinoma",
+          "source_file": "2_GARD_QA/0000148.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_bda8f653bd73237ade89",
+          "score": 0.8457241058349609,
+          "lexical_score": 0.005539479710899259,
+          "dense_score": 0.8457241058349609,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": 5.913309097290039
+        },
+        {
+          "id": "medquad_e49b3bddf1467b848db4:0",
+          "title": "What are the symptoms of Adenocarcinoma of the appendix ?",
+          "text": "What are the symptoms of adenocarcinoma of the appendix? The most common clinical symptom is acute appendicitis. Other symptoms include a palpable abdominal mass, ascites (fluid buildup), peritonitis (inflammation of the membrane lining the abdominal cavity) due to a perforated appendix, and non-specific gastrointestinal or genitourinary symptoms such as bloating, vague abdominal pain, and tenderness.",
+          "source_url": "https://rarediseases.info.nih.gov/gard/10564/adenocarcinoma-of-the-appendix",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Adenocarcinoma of the appendix",
+          "source_file": "2_GARD_QA/0000147.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_e49b3bddf1467b848db4",
+          "score": 0.8118939399719238,
+          "lexical_score": 0.0,
+          "dense_score": 0.8118939399719238,
+          "accepted": true,
+          "e5_rank": 2,
+          "reranker_score": -4.033156871795654
+        }
+      ],
+      "reference_text": "What causes adenoid cystic carcinoma? The underlying cause of adenoid cystic carcinoma (ACC) is not yet known, and no strong genetic or environmental risk factors specific to ACC have been identified. Researchers believe that a combination of various genetic and environmental factors probably interact to ultimately cause a person to develop specific types of cancers. There is ongoing research to learn more about the many factors that contribute to the development of cancer. Cancer is at least partly due to acquired (not inherited) damage or changes to the DNA in certain cells. For example, various studies have shown that chromosomal abnormalities and genetic deletions are present in samples of ACC. However, these genetic abnormalities are present only in the cancer cells, not in the cells with the genetic material that is passed on to offspring (the egg and sperm cells).",
+      "evidence_quotes": [
+        "The underlying cause of adenoid cystic carcinoma (ACC) is not yet known"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N04",
+      "category": "covered",
+      "question": "Quel lien le document décrit-il entre la maladie de Krabbe et la myéline ?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 41.255,
+      "result": {
+        "trace_id": "49ded89d4a594f638b3b72f9901c03c7",
+        "answer": "La maladie de Krabbe est causée par une carence en l'enzyme galactosylcéramidase qui impaire la croissance et le maintien de la myéline. [1]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_08460f71ad06c7eb33f7:0",
+            "document_id": "medquad_08460f71ad06c7eb33f7",
+            "title": "What is (are) Krabbe disease ?",
+            "url": "https://ghr.nlm.nih.gov/condition/krabbe-disease",
+            "text": "Krabbe disease (also called globoid cell leukodystrophy) is a degenerative disorder that affects the nervous system. It is caused by the shortage (deficiency) of an enzyme called galactosylceramidase. This enzyme deficiency impairs the growth and maintenance of myelin, the protective covering around certain nerve cells that ensures the rapid transmission of nerve impulses. Krabbe disease is part of a group of disorders known as leukodystrophies, which result from the loss of myelin (demyelination). This disorder is also characterized by the abnormal presence of globoid cells, which are globe-shaped cells that usually have more than one nucleus. The symptoms of Krabbe disease usually begin before the age of 1 year (the infantile form). Initial signs and symptoms typically include irritability, muscle weakness, feeding difficulties, episodes of fever without any sign of infection, stiff posture, and slowed mental and physical development. As",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_08460f71ad06c7eb33f7:1",
+            "document_id": "medquad_08460f71ad06c7eb33f7",
+            "title": "What is (are) Krabbe disease ?",
+            "url": "https://ghr.nlm.nih.gov/condition/krabbe-disease",
+            "text": "symptoms typically include irritability, muscle weakness, feeding difficulties, episodes of fever without any sign of infection, stiff posture, and slowed mental and physical development. As the disease progresses, muscles continue to weaken, affecting the infant's ability to move, chew, swallow, and breathe. Affected infants also experience vision loss and seizures. Less commonly, onset of Krabbe disease can occur in childhood, adolescence, or adulthood (late-onset forms). Visual problems and walking difficulties are the most common initial symptoms in this form of the disorder, however, signs and symptoms vary considerably among affected individuals.",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "definition",
+          "score": 0.189,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 611.12,
+          "retrieval_ms": 721.45,
+          "candidate_order": [
+            {
+              "id": "medquad_08460f71ad06c7eb33f7:0",
+              "document_id": "medquad_08460f71ad06c7eb33f7",
+              "accepted": true,
+              "dense_score": 0.844558835029602,
+              "reranker_score": -0.016740424558520317
+            },
+            {
+              "id": "medquad_08460f71ad06c7eb33f7:1",
+              "document_id": "medquad_08460f71ad06c7eb33f7",
+              "accepted": true,
+              "dense_score": 0.8178871870040894,
+              "reranker_score": -4.7376604080200195
+            },
+            {
+              "id": "medquad_2f679a02de479300868f:1",
+              "document_id": "medquad_2f679a02de479300868f",
+              "accepted": true,
+              "dense_score": 0.800721287727356,
+              "reranker_score": -6.870667934417725
+            },
+            {
+              "id": "medquad_529d838e6da67d37c006:1",
+              "document_id": "medquad_529d838e6da67d37c006",
+              "accepted": false,
+              "dense_score": 0.7983003854751587,
+              "reranker_score": -7.001742362976074
+            },
+            {
+              "id": "medquad_138bc9b1e2a968f1d73c:3",
+              "document_id": "medquad_138bc9b1e2a968f1d73c",
+              "accepted": true,
+              "dense_score": 0.8061415553092957,
+              "reranker_score": -7.298080921173096
+            }
+          ]
+        },
+        "latency_ms": 41254.49
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_08460f71ad06c7eb33f7:0",
+          "title": "What is (are) Krabbe disease ?",
+          "text": "Krabbe disease (also called globoid cell leukodystrophy) is a degenerative disorder that affects the nervous system. It is caused by the shortage (deficiency) of an enzyme called galactosylceramidase. This enzyme deficiency impairs the growth and maintenance of myelin, the protective covering around certain nerve cells that ensures the rapid transmission of nerve impulses. Krabbe disease is part of a group of disorders known as leukodystrophies, which result from the loss of myelin (demyelination). This disorder is also characterized by the abnormal presence of globoid cells, which are globe-shaped cells that usually have more than one nucleus. The symptoms of Krabbe disease usually begin before the age of 1 year (the infantile form). Initial signs and symptoms typically include irritability, muscle weakness, feeding difficulties, episodes of fever without any sign of infection, stiff posture, and slowed mental and physical development. As",
+          "source_url": "https://ghr.nlm.nih.gov/condition/krabbe-disease",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "Krabbe disease",
+          "source_file": "3_GHR_QA/0000567.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_08460f71ad06c7eb33f7",
+          "score": 0.844558835029602,
+          "lexical_score": 0.0603360973384965,
+          "dense_score": 0.844558835029602,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": -0.016740424558520317
+        },
+        {
+          "id": "medquad_08460f71ad06c7eb33f7:1",
+          "title": "What is (are) Krabbe disease ?",
+          "text": "symptoms typically include irritability, muscle weakness, feeding difficulties, episodes of fever without any sign of infection, stiff posture, and slowed mental and physical development. As the disease progresses, muscles continue to weaken, affecting the infant's ability to move, chew, swallow, and breathe. Affected infants also experience vision loss and seizures. Less commonly, onset of Krabbe disease can occur in childhood, adolescence, or adulthood (late-onset forms). Visual problems and walking difficulties are the most common initial symptoms in this form of the disorder, however, signs and symptoms vary considerably among affected individuals.",
+          "source_url": "https://ghr.nlm.nih.gov/condition/krabbe-disease",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "Krabbe disease",
+          "source_file": "3_GHR_QA/0000567.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_08460f71ad06c7eb33f7",
+          "score": 0.8178871870040894,
+          "lexical_score": 0.052847442492639285,
+          "dense_score": 0.8178871870040894,
+          "accepted": true,
+          "e5_rank": 2,
+          "reranker_score": -4.7376604080200195
+        }
+      ],
+      "reference_text": "Krabbe disease (also called globoid cell leukodystrophy) is a degenerative disorder that affects the nervous system. It is caused by the shortage (deficiency) of an enzyme called galactosylceramidase. This enzyme deficiency impairs the growth and maintenance of myelin, the protective covering around certain nerve cells that ensures the rapid transmission of nerve impulses. Krabbe disease is part of a group of disorders known as leukodystrophies, which result from the loss of myelin (demyelination). This disorder is also characterized by the abnormal presence of globoid cells, which are globe-shaped cells that usually have more than one nucleus.  The symptoms of Krabbe disease usually begin before the age of 1 year (the infantile form). Initial signs and symptoms typically include irritability, muscle weakness, feeding difficulties, episodes of fever without any sign of infection, stiff posture, and slowed mental and physical development. As the disease progresses, muscles continue to weaken, affecting the infant's ability to move, chew, swallow, and breathe. Affected infants also experience vision loss and seizures.  Less commonly, onset of Krabbe disease can occur in childhood, adolescence, or adulthood (late-onset forms). Visual problems and walking difficulties are the most common initial symptoms in this form of the disorder, however, signs and symptoms vary considerably among affected individuals.",
+      "evidence_quotes": [
+        "This enzyme deficiency impairs the growth and maintenance of myelin"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N05",
+      "category": "covered",
+      "question": "Which reflex and muscle findings are listed for hypertrophic neuropathy of Dejerine-Sottas?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 54.653,
+      "result": {
+        "trace_id": "1741a1d9a73740a49abcc3b6c7ed061b",
+        "answer": "Les signes et symptômes incluent l'areflexie, la hypertrophie des nerfs, le faible réflexe, une protéine augmentée dans le liquide céphalorachidien (CSF), un retard moteur, une hypotonie musculaire, une formation d’oignon bulbiforme et une pes cavus. [2]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_e277a26ae64d9030e0b2:1",
+            "document_id": "medquad_e277a26ae64d9030e0b2",
+            "title": "What are the symptoms of Hypertrophic neuropathy of Dejerine-Sottas ?",
+            "url": "https://rarediseases.info.nih.gov/gard/9204/hypertrophic-neuropathy-of-dejerine-sottas",
+            "text": "nerve changes - Hyporeflexia - Increased CSF protein - Infantile onset - Kyphoscoliosis - Motor delay - Muscular hypotonia - Onion bulb formation - Pes cavus - Segmental peripheral demyelination/remyelination - Sensory ataxia - Steppage gait - Ulnar claw - Variable expressivity - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_e277a26ae64d9030e0b2:0",
+            "document_id": "medquad_e277a26ae64d9030e0b2",
+            "title": "What are the symptoms of Hypertrophic neuropathy of Dejerine-Sottas ?",
+            "url": "https://rarediseases.info.nih.gov/gard/9204/hypertrophic-neuropathy-of-dejerine-sottas",
+            "text": "What are the signs and symptoms of Hypertrophic neuropathy of Dejerine-Sottas? The Human Phenotype Ontology provides the following list of signs and symptoms for Hypertrophic neuropathy of Dejerine-Sottas. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Nystagmus 5% Areflexia - Autosomal dominant inheritance - Autosomal recessive inheritance - Decreased motor nerve conduction velocity - Decreased number of peripheral myelinated nerve fibers - Distal amyotrophy - Distal sensory impairment - Foot dorsiflexor weakness - Hammertoe - Heterogeneous - Hypertrophic nerve changes - Hyporeflexia - Increased CSF protein - Infantile onset - Kyphoscoliosis - Motor delay - Muscular hypotonia - Onion bulb formation - Pes",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "hors_domaine",
+          "score": 0.176,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 466.24,
+          "retrieval_ms": 616.51,
+          "candidate_order": [
+            {
+              "id": "medquad_e277a26ae64d9030e0b2:1",
+              "document_id": "medquad_e277a26ae64d9030e0b2",
+              "accepted": true,
+              "dense_score": 0.9015719294548035,
+              "reranker_score": 4.8772454261779785
+            },
+            {
+              "id": "medquad_e277a26ae64d9030e0b2:0",
+              "document_id": "medquad_e277a26ae64d9030e0b2",
+              "accepted": true,
+              "dense_score": 0.9068683385848999,
+              "reranker_score": 2.8977668285369873
+            },
+            {
+              "id": "medquad_1579759d0e7313f58881:0",
+              "document_id": "medquad_1579759d0e7313f58881",
+              "accepted": true,
+              "dense_score": 0.9198898673057556,
+              "reranker_score": 1.884475588798523
+            },
+            {
+              "id": "medquad_e277a26ae64d9030e0b2:2",
+              "document_id": "medquad_e277a26ae64d9030e0b2",
+              "accepted": true,
+              "dense_score": 0.8666961193084717,
+              "reranker_score": -2.9371213912963867
+            },
+            {
+              "id": "medquad_3ab593313fd573b16123:1",
+              "document_id": "medquad_3ab593313fd573b16123",
+              "accepted": true,
+              "dense_score": 0.8270505666732788,
+              "reranker_score": -8.636676788330078
+            }
+          ]
+        },
+        "latency_ms": 54653.42
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_e277a26ae64d9030e0b2:1",
+          "title": "What are the symptoms of Hypertrophic neuropathy of Dejerine-Sottas ?",
+          "text": "nerve changes - Hyporeflexia - Increased CSF protein - Infantile onset - Kyphoscoliosis - Motor delay - Muscular hypotonia - Onion bulb formation - Pes cavus - Segmental peripheral demyelination/remyelination - Sensory ataxia - Steppage gait - Ulnar claw - Variable expressivity - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of",
+          "source_url": "https://rarediseases.info.nih.gov/gard/9204/hypertrophic-neuropathy-of-dejerine-sottas",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Hypertrophic neuropathy of Dejerine-Sottas",
+          "source_file": "2_GARD_QA/0003033.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_e277a26ae64d9030e0b2",
+          "score": 0.9015719294548035,
+          "lexical_score": 0.24229405202003598,
+          "dense_score": 0.9015719294548035,
+          "accepted": true,
+          "e5_rank": 3,
+          "reranker_score": 4.8772454261779785
+        },
+        {
+          "id": "medquad_e277a26ae64d9030e0b2:0",
+          "title": "What are the symptoms of Hypertrophic neuropathy of Dejerine-Sottas ?",
+          "text": "What are the signs and symptoms of Hypertrophic neuropathy of Dejerine-Sottas? The Human Phenotype Ontology provides the following list of signs and symptoms for Hypertrophic neuropathy of Dejerine-Sottas. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Nystagmus 5% Areflexia - Autosomal dominant inheritance - Autosomal recessive inheritance - Decreased motor nerve conduction velocity - Decreased number of peripheral myelinated nerve fibers - Distal amyotrophy - Distal sensory impairment - Foot dorsiflexor weakness - Hammertoe - Heterogeneous - Hypertrophic nerve changes - Hyporeflexia - Increased CSF protein - Infantile onset - Kyphoscoliosis - Motor delay - Muscular hypotonia - Onion bulb formation - Pes",
+          "source_url": "https://rarediseases.info.nih.gov/gard/9204/hypertrophic-neuropathy-of-dejerine-sottas",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Hypertrophic neuropathy of Dejerine-Sottas",
+          "source_file": "2_GARD_QA/0003033.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_e277a26ae64d9030e0b2",
+          "score": 0.9068683385848999,
+          "lexical_score": 0.43544867728922787,
+          "dense_score": 0.9068683385848999,
+          "accepted": true,
+          "e5_rank": 2,
+          "reranker_score": 2.8977668285369873
+        }
+      ],
+      "reference_text": "What are the signs and symptoms of Hypertrophic neuropathy of Dejerine-Sottas? The Human Phenotype Ontology provides the following list of signs and symptoms for Hypertrophic neuropathy of Dejerine-Sottas. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Nystagmus 5% Areflexia - Autosomal dominant inheritance - Autosomal recessive inheritance - Decreased motor nerve conduction velocity - Decreased number of peripheral myelinated nerve fibers - Distal amyotrophy - Distal sensory impairment - Foot dorsiflexor weakness - Hammertoe - Heterogeneous - Hypertrophic nerve changes - Hyporeflexia - Increased CSF protein - Infantile onset - Kyphoscoliosis - Motor delay - Muscular hypotonia - Onion bulb formation - Pes cavus - Segmental peripheral demyelination/remyelination - Sensory ataxia - Steppage gait - Ulnar claw - Variable expressivity - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+      "evidence_quotes": [
+        "Areflexia",
+        "Hyporeflexia",
+        "Distal amyotrophy",
+        "Muscular hypotonia"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N06",
+      "category": "covered",
+      "question": "Pour le lichen plan pigmentaire, le texte distingue-t-il une cause certaine de facteurs déclenchants possibles ?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 34.229,
+      "result": {
+        "trace_id": "2b2db8bad5b34d40a25db13abb7990c6",
+        "answer": "Le texte distingue une cause certaine inconnue de facteurs déclenchants possibles pour le lichen plan pigmentaire. [1]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_c83f535ec32be3063467:0",
+            "document_id": "medquad_c83f535ec32be3063467",
+            "title": "What causes Lichen planus pigmentosus ?",
+            "url": "https://rarediseases.info.nih.gov/gard/10816/lichen-planus-pigmentosus",
+            "text": "What causes lichen planus pigmentosus? The exact underlying cause of lichen planus pigmentosus is currently unknown. However, studies suggest that the condition may be triggered by viral infections, UV light or the application of certain oils on the hair or skin (i.e. mustard oil, amla oil).",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_7a520360bc13939c142a:0",
+            "document_id": "medquad_7a520360bc13939c142a",
+            "title": "What causes Pityriasis lichenoides et varioliformis acuta ?",
+            "url": "https://rarediseases.info.nih.gov/gard/9768/pityriasis-lichenoides-et-varioliformis-acuta",
+            "text": "What causes pityriasis lichenoides et varioliformis acuta? The exact underlying cause of pityriasis lichenoides et varioliformis acuta (PLEVA) is unknown. Some scientists suspect that it may occur due to an exaggerated immune response or hypersensitivity to an infection. Some of the infections that have been associated with PLEVA include: Toxoplasma gondii Epstein-Barr virus HIV Cytomegalovirus Parvovirus (fifth disease) Staphylococcus aureus Group A beta-haemolytic streptococci Others scientists think the condition may be a benign lymphoproliferative disorder. These conditions are characterized by an overproduction of certain white blood cells (lymphocytes) which can result in tissue and organ damage.",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "causes",
+          "score": 0.213,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 580.17,
+          "retrieval_ms": 738.17,
+          "candidate_order": [
+            {
+              "id": "medquad_c83f535ec32be3063467:0",
+              "document_id": "medquad_c83f535ec32be3063467",
+              "accepted": true,
+              "dense_score": 0.8463895320892334,
+              "reranker_score": 2.6905357837677
+            },
+            {
+              "id": "medquad_7a520360bc13939c142a:0",
+              "document_id": "medquad_7a520360bc13939c142a",
+              "accepted": true,
+              "dense_score": 0.8190428018569946,
+              "reranker_score": -3.655365467071533
+            },
+            {
+              "id": "medquad_cc85640e12516c5a8c21:1",
+              "document_id": "medquad_cc85640e12516c5a8c21",
+              "accepted": true,
+              "dense_score": 0.8250742554664612,
+              "reranker_score": -5.012966632843018
+            },
+            {
+              "id": "medquad_ff0c8765eedb38c625fb:1",
+              "document_id": "medquad_ff0c8765eedb38c625fb",
+              "accepted": true,
+              "dense_score": 0.8215824365615845,
+              "reranker_score": -7.997085094451904
+            },
+            {
+              "id": "medquad_2cf364277b7b616ae435:1",
+              "document_id": "medquad_2cf364277b7b616ae435",
+              "accepted": true,
+              "dense_score": 0.8225075006484985,
+              "reranker_score": -8.827550888061523
+            }
+          ]
+        },
+        "latency_ms": 34229.04
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_c83f535ec32be3063467:0",
+          "title": "What causes Lichen planus pigmentosus ?",
+          "text": "What causes lichen planus pigmentosus? The exact underlying cause of lichen planus pigmentosus is currently unknown. However, studies suggest that the condition may be triggered by viral infections, UV light or the application of certain oils on the hair or skin (i.e. mustard oil, amla oil).",
+          "source_url": "https://rarediseases.info.nih.gov/gard/10816/lichen-planus-pigmentosus",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "causes",
+          "focus": "Lichen planus pigmentosus",
+          "source_file": "2_GARD_QA/0003590.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_c83f535ec32be3063467",
+          "score": 0.8463895320892334,
+          "lexical_score": 0.09068219004001767,
+          "dense_score": 0.8463895320892334,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": 2.6905357837677
+        },
+        {
+          "id": "medquad_7a520360bc13939c142a:0",
+          "title": "What causes Pityriasis lichenoides et varioliformis acuta ?",
+          "text": "What causes pityriasis lichenoides et varioliformis acuta? The exact underlying cause of pityriasis lichenoides et varioliformis acuta (PLEVA) is unknown. Some scientists suspect that it may occur due to an exaggerated immune response or hypersensitivity to an infection. Some of the infections that have been associated with PLEVA include: Toxoplasma gondii Epstein-Barr virus HIV Cytomegalovirus Parvovirus (fifth disease) Staphylococcus aureus Group A beta-haemolytic streptococci Others scientists think the condition may be a benign lymphoproliferative disorder. These conditions are characterized by an overproduction of certain white blood cells (lymphocytes) which can result in tissue and organ damage.",
+          "source_url": "https://rarediseases.info.nih.gov/gard/9768/pityriasis-lichenoides-et-varioliformis-acuta",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "causes",
+          "focus": "Pityriasis lichenoides et varioliformis acuta",
+          "source_file": "2_GARD_QA/0004907.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_7a520360bc13939c142a",
+          "score": 0.8190428018569946,
+          "lexical_score": 0.002900075331213976,
+          "dense_score": 0.8190428018569946,
+          "accepted": true,
+          "e5_rank": 5,
+          "reranker_score": -3.655365467071533
+        }
+      ],
+      "reference_text": "What causes lichen planus pigmentosus? The exact underlying cause of lichen planus pigmentosus is currently unknown. However, studies suggest that the condition may be triggered by viral infections, UV light or the application of certain oils on the hair or skin (i.e. mustard oil, amla oil).",
+      "evidence_quotes": [
+        "The exact underlying cause of lichen planus pigmentosus is currently unknown",
+        "may be triggered by viral infections, UV light"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N07",
+      "category": "covered",
+      "question": "What does the acronym TARP stand for in TARP syndrome?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": false,
+      "wall_seconds": 31.791,
+      "result": {
+        "trace_id": "34e426ea927f461e8894bb77494c0c64",
+        "answer": "Les passages disponibles ne suffisent pas pour répondre à cette question.",
+        "status": "abstain",
+        "mode": "abstain",
+        "sources": [],
+        "intent": {
+          "label": "hors_domaine",
+          "score": 0.176,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 423.6,
+          "retrieval_ms": 508.02,
+          "candidate_order": [
+            {
+              "id": "medquad_59b52142d4b91c7b14b0:0",
+              "document_id": "medquad_59b52142d4b91c7b14b0",
+              "accepted": true,
+              "dense_score": 0.9102845191955566,
+              "reranker_score": 9.012340545654297
+            },
+            {
+              "id": "medquad_894faa5f1b0bfa775ec0:0",
+              "document_id": "medquad_894faa5f1b0bfa775ec0",
+              "accepted": true,
+              "dense_score": 0.8422203660011292,
+              "reranker_score": 2.1627085208892822
+            },
+            {
+              "id": "medquad_d8ceab965ca545cd4cde:0",
+              "document_id": "medquad_d8ceab965ca545cd4cde",
+              "accepted": true,
+              "dense_score": 0.8929064273834229,
+              "reranker_score": 1.417096734046936
+            },
+            {
+              "id": "medquad_5356c71bf73c40b8a3d8:0",
+              "document_id": "medquad_5356c71bf73c40b8a3d8",
+              "accepted": true,
+              "dense_score": 0.8310979008674622,
+              "reranker_score": 0.9993305802345276
+            },
+            {
+              "id": "medquad_894faa5f1b0bfa775ec0:1",
+              "document_id": "medquad_894faa5f1b0bfa775ec0",
+              "accepted": true,
+              "dense_score": 0.8284652233123779,
+              "reranker_score": -1.197935700416565
+            }
+          ]
+        },
+        "latency_ms": 31790.52
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_59b52142d4b91c7b14b0:0",
+          "title": "What is (are) TARP syndrome ?",
+          "text": "TARP syndrome is a rare condition affecting males that causes several birth defects. TARP stands for Talipes equinovarus, Atrial septal defect, Robin sequence, and Persistent left superior vena cava. Those with TARP syndrome have clubfoot deformity (talipes equinovarus) and congenital heart defects involving failure of the upper heart chambers to close (atrial septal defect). The Robin sequence (also known as Pierre Robins sequence) is characterized by a small lower jaw at birth that prevents proper feeding of the infant, followed by a retracted or displaced tongue. A high-arched, cleft soft palate is also commonly seen. Affected individuals also have persistent left superior vena cava. TARP syndrome has been reported to cause death before birth or soon after birth. This condition is caused by mutations in the RBM10 gene and is inherited in an X-linked recessive fashion.",
+          "source_url": "https://rarediseases.info.nih.gov/gard/10089/tarp-syndrome",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "TARP syndrome",
+          "source_file": "2_GARD_QA/0006010.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_59b52142d4b91c7b14b0",
+          "score": 0.9102845191955566,
+          "lexical_score": 0.20415467803150258,
+          "dense_score": 0.9102845191955566,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": 9.012340545654297
+        },
+        {
+          "id": "medquad_894faa5f1b0bfa775ec0:0",
+          "title": "What is (are) tumor necrosis factor receptor-associated periodic syndrome ?",
+          "text": "Tumor necrosis factor receptor-associated periodic syndrome (commonly known as TRAPS) is a condition characterized by recurrent episodes of fever. These fevers typically last about 3 weeks but can last from a few days to a few months. The frequency of the episodes varies greatly among affected individuals; fevers can occur anywhere between every 6 weeks to every few years. Some individuals can go many years without having a fever episode. Fever episodes usually occur spontaneously, but sometimes they can be brought on by a variety of triggers, such as minor injury, infection, stress, exercise, or hormonal changes. During episodes of fever, people with TRAPS can have additional signs and symptoms. These include abdominal and muscle pain and a spreading skin rash, typically found on the limbs. Affected individuals may also experience puffiness or swelling in the skin around the eyes",
+          "source_url": "https://ghr.nlm.nih.gov/condition/tumor-necrosis-factor-receptor-associated-periodic-syndrome",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "tumor necrosis factor receptor-associated periodic syndrome",
+          "source_file": "3_GHR_QA/0001001.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_894faa5f1b0bfa775ec0",
+          "score": 0.8422203660011292,
+          "lexical_score": 0.006888874359448107,
+          "dense_score": 0.8422203660011292,
+          "accepted": true,
+          "e5_rank": 3,
+          "reranker_score": 2.1627085208892822
+        }
+      ],
+      "reference_text": "TARP syndrome is a rare condition affecting males that causes several birth defects. TARP stands for Talipes equinovarus, Atrial septal defect, Robin sequence, and Persistent left superior vena cava. Those with TARP syndrome have clubfoot deformity (talipes equinovarus) and congenital heart defects involving failure of the upper heart chambers to close (atrial septal defect). The Robin sequence (also known as Pierre Robins sequence) is characterized by a small lower jaw at birth that prevents proper feeding of the infant, followed by a retracted or displaced tongue. A high-arched, cleft soft palate is also commonly seen. Affected individuals also have persistent left superior vena cava. TARP syndrome has been reported to cause death before birth or soon after birth. This condition is caused by mutations in the RBM10 gene and is inherited in an X-linked recessive fashion.",
+      "evidence_quotes": [
+        "Talipes equinovarus, Atrial septal defect, Robin sequence, and Persistent left superior vena cava"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N08",
+      "category": "covered",
+      "question": "Quels signes le document mentionne-t-il dans l’hépatite auto-immune, notamment concernant la fatigue et la peau ?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 43.519,
+      "result": {
+        "trace_id": "78e9f79cda484acca8f1b363216f8b93",
+        "answer": "La fatigue est probablement la symptomatologie la plus courante de l'hépatite auto-immune. D'autres signes incluent une peau itérée et des éruptions cutanées. [1]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_c02eee61728de49aadda:0",
+            "document_id": "medquad_c02eee61728de49aadda",
+            "title": "What are the symptoms of Autoimmune hepatitis ?",
+            "url": "https://rarediseases.info.nih.gov/gard/5871/autoimmune-hepatitis",
+            "text": "What are the signs and symptoms of Autoimmune hepatitis? Symptoms of autoimmune hepatitis range from mild to severe. Fatigue is probably the most common symptom of autoimmune hepatitis. Other symptoms include: an enlarged liver jaundice itching skin rashes joint pain abdominal discomfort spider angiomas, or abnormal blood vessels, on the skin nausea vomiting loss of appetite dark urine pale or gray-colored stools People in advanced stages of the disease are more likely to have symptoms related to chronic liver disease, such as fluid in the abdomenalso called ascitesand mental confusion. Women may stop having menstrual periods. The Human Phenotype Ontology provides the following list of signs and symptoms for Autoimmune hepatitis. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_c02eee61728de49aadda:1",
+            "document_id": "medquad_c02eee61728de49aadda",
+            "title": "What are the symptoms of Autoimmune hepatitis ?",
+            "url": "https://rarediseases.info.nih.gov/gard/5871/autoimmune-hepatitis",
+            "text": "available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Autoimmune antibody positivity - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "symptomes",
+          "score": 0.244,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [
+          {
+            "text": "fatigue",
+            "label": "SYMPTOME",
+            "start": 93,
+            "end": 100,
+            "negation_candidate": false
+          }
+        ],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 547.57,
+          "retrieval_ms": 1005.14,
+          "candidate_order": [
+            {
+              "id": "medquad_c02eee61728de49aadda:0",
+              "document_id": "medquad_c02eee61728de49aadda",
+              "accepted": true,
+              "dense_score": 0.858582615852356,
+              "reranker_score": 5.008084297180176
+            },
+            {
+              "id": "medquad_c02eee61728de49aadda:1",
+              "document_id": "medquad_c02eee61728de49aadda",
+              "accepted": true,
+              "dense_score": 0.8410146236419678,
+              "reranker_score": -3.0177764892578125
+            },
+            {
+              "id": "medquad_6204e151b1edc82bfb51:1",
+              "document_id": "medquad_6204e151b1edc82bfb51",
+              "accepted": true,
+              "dense_score": 0.8382935523986816,
+              "reranker_score": -3.662689685821533
+            },
+            {
+              "id": "medquad_17b2eae21f5dbddbf5fb:0",
+              "document_id": "medquad_17b2eae21f5dbddbf5fb",
+              "accepted": true,
+              "dense_score": 0.8339332938194275,
+              "reranker_score": -3.779092788696289
+            },
+            {
+              "id": "medquad_ae0f2c402034437f6abd:2",
+              "document_id": "medquad_ae0f2c402034437f6abd",
+              "accepted": true,
+              "dense_score": 0.8322795629501343,
+              "reranker_score": -6.350438117980957
+            }
+          ]
+        },
+        "latency_ms": 43518.74
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_c02eee61728de49aadda:0",
+          "title": "What are the symptoms of Autoimmune hepatitis ?",
+          "text": "What are the signs and symptoms of Autoimmune hepatitis? Symptoms of autoimmune hepatitis range from mild to severe. Fatigue is probably the most common symptom of autoimmune hepatitis. Other symptoms include: an enlarged liver jaundice itching skin rashes joint pain abdominal discomfort spider angiomas, or abnormal blood vessels, on the skin nausea vomiting loss of appetite dark urine pale or gray-colored stools People in advanced stages of the disease are more likely to have symptoms related to chronic liver disease, such as fluid in the abdomenalso called ascitesand mental confusion. Women may stop having menstrual periods. The Human Phenotype Ontology provides the following list of signs and symptoms for Autoimmune hepatitis. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look",
+          "source_url": "https://rarediseases.info.nih.gov/gard/5871/autoimmune-hepatitis",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Autoimmune hepatitis",
+          "source_file": "2_GARD_QA/0000536.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_c02eee61728de49aadda",
+          "score": 0.858582615852356,
+          "lexical_score": 0.011416701169963517,
+          "dense_score": 0.858582615852356,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": 5.008084297180176
+        },
+        {
+          "id": "medquad_c02eee61728de49aadda:1",
+          "title": "What are the symptoms of Autoimmune hepatitis ?",
+          "text": "available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Autoimmune antibody positivity - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a",
+          "source_url": "https://rarediseases.info.nih.gov/gard/5871/autoimmune-hepatitis",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Autoimmune hepatitis",
+          "source_file": "2_GARD_QA/0000536.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_c02eee61728de49aadda",
+          "score": 0.8410146236419678,
+          "lexical_score": 0.0,
+          "dense_score": 0.8410146236419678,
+          "accepted": true,
+          "e5_rank": 2,
+          "reranker_score": -3.0177764892578125
+        }
+      ],
+      "reference_text": "What are the signs and symptoms of Autoimmune hepatitis? Symptoms of autoimmune hepatitis range from mild to severe. Fatigue is probably the most common symptom of autoimmune hepatitis. Other symptoms include: an enlarged liver jaundice itching skin rashes joint pain abdominal discomfort spider angiomas, or abnormal blood vessels, on the skin nausea vomiting loss of appetite dark urine pale or gray-colored stools People in advanced stages of the disease are more likely to have symptoms related to chronic liver disease, such as fluid in the abdomenalso called ascitesand mental confusion. Women may stop having menstrual periods. The Human Phenotype Ontology provides the following list of signs and symptoms for Autoimmune hepatitis. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Autoimmune antibody positivity - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+      "evidence_quotes": [
+        "Fatigue is probably the most common symptom",
+        "jaundice itching skin rashes"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N09",
+      "category": "covered",
+      "question": "La délétion du syndrome 3p- est-elle toujours transmise par un parent ?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 38.31,
+      "result": {
+        "trace_id": "9b308a6797a5450faac684c5a388848f",
+        "answer": "Dans la plupart des cas, la délétion du syndrome 3p- ne est pas héréditaire et n'est pas transmise par un parent. [1]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_1426acd9d44286e5322c:0",
+            "document_id": "medquad_1426acd9d44286e5322c",
+            "title": "What causes Chromosome 3p- syndrome ?",
+            "url": "https://rarediseases.info.nih.gov/gard/3750/chromosome-3p--syndrome",
+            "text": "What causes chromosome 3p- syndrome? In most people with chromosome 3p- syndrome, the deletion occurs as a new mutation (called a de novo mutation) and is not inherited from a parent. De novo mutations are due to a random error that occurs during the formation of egg or sperm cells, or shortly after conception. In a few cases, the deletion is inherited from a parent.",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_44f6822f5558fb8d69d9:1",
+            "document_id": "medquad_44f6822f5558fb8d69d9",
+            "title": "What are the symptoms of Chromosome 3p- syndrome ?",
+            "url": "https://rarediseases.info.nih.gov/gard/3750/chromosome-3p--syndrome",
+            "text": "and/or congenital heart defects. To read more about some of the signs and symptoms reported in people with 3p deletion syndrome, you can read Unique's disorder guide entitled '3p25 deletions.' The information in this guide is drawn partly from the published medical literature, and partly from Unique's database of members with a 3p deletion. The Human Phenotype Ontology provides the following list of signs and symptoms for Chromosome 3p- syndrome. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Cognitive impairment 90% Hypertelorism 90% Long philtrum 90% Ptosis 90% Short stature 90% Telecanthus 90% Abnormality of calvarial morphology 50% Cleft palate 50% Complete atrioventricular",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "hors_domaine",
+          "score": 0.214,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 549.16,
+          "retrieval_ms": 623.74,
+          "candidate_order": [
+            {
+              "id": "medquad_1426acd9d44286e5322c:0",
+              "document_id": "medquad_1426acd9d44286e5322c",
+              "accepted": true,
+              "dense_score": 0.8636893033981323,
+              "reranker_score": 6.568812370300293
+            },
+            {
+              "id": "medquad_44f6822f5558fb8d69d9:1",
+              "document_id": "medquad_44f6822f5558fb8d69d9",
+              "accepted": true,
+              "dense_score": 0.8409056663513184,
+              "reranker_score": -3.9434714317321777
+            },
+            {
+              "id": "medquad_44f6822f5558fb8d69d9:0",
+              "document_id": "medquad_44f6822f5558fb8d69d9",
+              "accepted": true,
+              "dense_score": 0.8337020874023438,
+              "reranker_score": -4.483299732208252
+            },
+            {
+              "id": "medquad_44f6822f5558fb8d69d9:3",
+              "document_id": "medquad_44f6822f5558fb8d69d9",
+              "accepted": true,
+              "dense_score": 0.8478168249130249,
+              "reranker_score": -4.916601657867432
+            },
+            {
+              "id": "medquad_44f6822f5558fb8d69d9:2",
+              "document_id": "medquad_44f6822f5558fb8d69d9",
+              "accepted": true,
+              "dense_score": 0.8298780918121338,
+              "reranker_score": -5.407863616943359
+            }
+          ]
+        },
+        "latency_ms": 38310.21
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_1426acd9d44286e5322c:0",
+          "title": "What causes Chromosome 3p- syndrome ?",
+          "text": "What causes chromosome 3p- syndrome? In most people with chromosome 3p- syndrome, the deletion occurs as a new mutation (called a de novo mutation) and is not inherited from a parent. De novo mutations are due to a random error that occurs during the formation of egg or sperm cells, or shortly after conception. In a few cases, the deletion is inherited from a parent.",
+          "source_url": "https://rarediseases.info.nih.gov/gard/3750/chromosome-3p--syndrome",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "causes",
+          "focus": "Chromosome 3p- syndrome",
+          "source_file": "2_GARD_QA/0001276.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_1426acd9d44286e5322c",
+          "score": 0.8636893033981323,
+          "lexical_score": 0.17511046317134618,
+          "dense_score": 0.8636893033981323,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": 6.568812370300293
+        },
+        {
+          "id": "medquad_44f6822f5558fb8d69d9:1",
+          "title": "What are the symptoms of Chromosome 3p- syndrome ?",
+          "text": "and/or congenital heart defects. To read more about some of the signs and symptoms reported in people with 3p deletion syndrome, you can read Unique's disorder guide entitled '3p25 deletions.' The information in this guide is drawn partly from the published medical literature, and partly from Unique's database of members with a 3p deletion. The Human Phenotype Ontology provides the following list of signs and symptoms for Chromosome 3p- syndrome. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Cognitive impairment 90% Hypertelorism 90% Long philtrum 90% Ptosis 90% Short stature 90% Telecanthus 90% Abnormality of calvarial morphology 50% Cleft palate 50% Complete atrioventricular",
+          "source_url": "https://rarediseases.info.nih.gov/gard/3750/chromosome-3p--syndrome",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Chromosome 3p- syndrome",
+          "source_file": "2_GARD_QA/0001276.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_44f6822f5558fb8d69d9",
+          "score": 0.8409056663513184,
+          "lexical_score": 0.11463639093270334,
+          "dense_score": 0.8409056663513184,
+          "accepted": true,
+          "e5_rank": 3,
+          "reranker_score": -3.9434714317321777
+        }
+      ],
+      "reference_text": "What causes chromosome 3p- syndrome? In most people with chromosome 3p- syndrome, the deletion occurs as a new mutation (called a de novo mutation) and is not inherited from a parent. De novo mutations are due to a random error that occurs during the formation of egg or sperm cells, or shortly after conception. In a few cases, the deletion is inherited from a parent.",
+      "evidence_quotes": [
+        "the deletion occurs as a new mutation",
+        "In a few cases, the deletion is inherited from a parent"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N10",
+      "category": "covered",
+      "question": "Comment le rachitisme affecte-t-il les os des enfants, selon le texte ?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 36.601,
+      "result": {
+        "trace_id": "6a316a198ace4bffaa04ad56ac343bdd",
+        "answer": "Le rachitisme cause des os fragiles et souples chez l'enfant en raison d'une carence en vitamine D, qui aide les os à absorber le calcium et le phosphore. [1]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_50dfd8fc2d30b166c61c:0",
+            "document_id": "medquad_50dfd8fc2d30b166c61c",
+            "title": "What is (are) Rickets ?",
+            "url": "https://www.nlm.nih.gov/medlineplus/rickets.html",
+            "text": "Rickets causes soft, weak bones in children. It usually occurs when they do not get enough vitamin D, which helps growing bones absorb the minerals calcium and phosphorous. It can also happen when calcium or phosphorus levels are too low. Your child might not get enough vitamin D if he or she - Has dark skin - Spends too little time outside - Has on sunscreen all the time when out of doors - Doesn't eat foods containing vitamin D because of lactose intolerance or a strict vegetarian diet - Is breastfed without receiving vitamin D supplements - Can't make or use vitamin D because of a medical disorder such as celiac disease In addition to dietary rickets, children can get an inherited form of the disease. Symptoms include bone pain or tenderness, impaired growth, and deformities of the bones",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_50dfd8fc2d30b166c61c:1",
+            "document_id": "medquad_50dfd8fc2d30b166c61c",
+            "title": "What is (are) Rickets ?",
+            "url": "https://www.nlm.nih.gov/medlineplus/rickets.html",
+            "text": "to dietary rickets, children can get an inherited form of the disease. Symptoms include bone pain or tenderness, impaired growth, and deformities of the bones and teeth. Your child's doctor uses lab and imaging tests to make the diagnosis. Treatment is replacing the calcium, phosphorus, or vitamin D that are lacking in the diet. Rickets is rare in the United States.",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "prevention",
+          "score": 0.205,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 439.34,
+          "retrieval_ms": 539.94,
+          "candidate_order": [
+            {
+              "id": "medquad_50dfd8fc2d30b166c61c:0",
+              "document_id": "medquad_50dfd8fc2d30b166c61c",
+              "accepted": true,
+              "dense_score": 0.8011174201965332,
+              "reranker_score": -2.917221784591675
+            },
+            {
+              "id": "medquad_50dfd8fc2d30b166c61c:1",
+              "document_id": "medquad_50dfd8fc2d30b166c61c",
+              "accepted": true,
+              "dense_score": 0.8089474439620972,
+              "reranker_score": -5.175915718078613
+            },
+            {
+              "id": "asthme_definition:0",
+              "document_id": "asthme_definition",
+              "accepted": true,
+              "dense_score": 0.8021736741065979,
+              "reranker_score": -7.250119686126709
+            },
+            {
+              "id": "medquad_03533c9e1d076ecb9add:1",
+              "document_id": "medquad_03533c9e1d076ecb9add",
+              "accepted": true,
+              "dense_score": 0.8032357096672058,
+              "reranker_score": -7.928431510925293
+            },
+            {
+              "id": "medquad_c5411e0bf3f0edf20bbe:1",
+              "document_id": "medquad_c5411e0bf3f0edf20bbe",
+              "accepted": true,
+              "dense_score": 0.801133394241333,
+              "reranker_score": -8.185546875
+            }
+          ]
+        },
+        "latency_ms": 36600.9
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_50dfd8fc2d30b166c61c:0",
+          "title": "What is (are) Rickets ?",
+          "text": "Rickets causes soft, weak bones in children. It usually occurs when they do not get enough vitamin D, which helps growing bones absorb the minerals calcium and phosphorous. It can also happen when calcium or phosphorus levels are too low. Your child might not get enough vitamin D if he or she - Has dark skin - Spends too little time outside - Has on sunscreen all the time when out of doors - Doesn't eat foods containing vitamin D because of lactose intolerance or a strict vegetarian diet - Is breastfed without receiving vitamin D supplements - Can't make or use vitamin D because of a medical disorder such as celiac disease In addition to dietary rickets, children can get an inherited form of the disease. Symptoms include bone pain or tenderness, impaired growth, and deformities of the bones",
+          "source_url": "https://www.nlm.nih.gov/medlineplus/rickets.html",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "Rickets",
+          "source_file": "4_MPlus_Health_Topics_QA/0000783.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_50dfd8fc2d30b166c61c",
+          "score": 0.8011174201965332,
+          "lexical_score": 0.0,
+          "dense_score": 0.8011174201965332,
+          "accepted": true,
+          "e5_rank": 5,
+          "reranker_score": -2.917221784591675
+        },
+        {
+          "id": "medquad_50dfd8fc2d30b166c61c:1",
+          "title": "What is (are) Rickets ?",
+          "text": "to dietary rickets, children can get an inherited form of the disease. Symptoms include bone pain or tenderness, impaired growth, and deformities of the bones and teeth. Your child's doctor uses lab and imaging tests to make the diagnosis. Treatment is replacing the calcium, phosphorus, or vitamin D that are lacking in the diet. Rickets is rare in the United States.",
+          "source_url": "https://www.nlm.nih.gov/medlineplus/rickets.html",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "Rickets",
+          "source_file": "4_MPlus_Health_Topics_QA/0000783.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_50dfd8fc2d30b166c61c",
+          "score": 0.8089474439620972,
+          "lexical_score": 0.0,
+          "dense_score": 0.8089474439620972,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": -5.175915718078613
+        }
+      ],
+      "reference_text": "Rickets causes soft, weak bones in children. It usually occurs when they do not get enough vitamin D, which helps growing bones absorb the minerals calcium and phosphorous. It can also happen when calcium or phosphorus levels are too low.    Your child might not get enough vitamin D if he or she       - Has dark skin    - Spends too little time outside    - Has on sunscreen all the time when out of doors    - Doesn't eat foods containing vitamin D because of lactose intolerance or a strict vegetarian diet    - Is breastfed without receiving vitamin D supplements    - Can't make or use vitamin D because of a medical disorder such as celiac disease       In addition to dietary rickets, children can get an inherited form of the disease. Symptoms include bone pain or tenderness, impaired growth, and deformities of the bones and teeth. Your child's doctor uses lab and imaging tests to make the diagnosis. Treatment is replacing the calcium, phosphorus, or vitamin D that are lacking in the diet. Rickets is rare in the United States.",
+      "evidence_quotes": [
+        "Rickets causes soft, weak bones in children"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N11",
+      "category": "covered",
+      "question": "Le syndrome de Gilbert provoque-t-il nécessairement des symptômes ?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 42.129,
+      "result": {
+        "trace_id": "b1553677d4e04ccc8c77bcfb4360bc7e",
+        "answer": "Bien que de nombreux porteurs du syndrome de Gilbert ne présentent aucun symptôme, d'autres peuvent éprouver des douleurs abdominales et des nausées. [1]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_4d68aed313df57fdb515:0",
+            "document_id": "medquad_4d68aed313df57fdb515",
+            "title": "What are the symptoms of Gilbert syndrome ?",
+            "url": "https://rarediseases.info.nih.gov/gard/6507/gilbert-syndrome",
+            "text": "What are the signs and symptoms of Gilbert syndrome? While many people with Gilbert syndrome never experience any symptoms, mild jaundice may occur if bilirubin levels get high enough. Other possible symptoms may include fatigue, weakness and abdominal pain. Patients may have more side effects from certain drugs such as irinotecan. The Human Phenotype Ontology provides the following list of signs and symptoms for Gilbert syndrome. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Abnormality of the liver 90% Abdominal pain 50% Nausea and vomiting 50% Reduced bone mineral density 7.5% Autosomal recessive inheritance - Jaundice - Unconjugated hyperbilirubinemia - The Human Phenotype",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_4d68aed313df57fdb515:1",
+            "document_id": "medquad_4d68aed313df57fdb515",
+            "title": "What are the symptoms of Gilbert syndrome ?",
+            "url": "https://rarediseases.info.nih.gov/gard/6507/gilbert-syndrome",
+            "text": "90% Abdominal pain 50% Nausea and vomiting 50% Reduced bone mineral density 7.5% Autosomal recessive inheritance - Jaundice - Unconjugated hyperbilirubinemia - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "prevention",
+          "score": 0.185,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 548.08,
+          "retrieval_ms": 629.64,
+          "candidate_order": [
+            {
+              "id": "medquad_4d68aed313df57fdb515:0",
+              "document_id": "medquad_4d68aed313df57fdb515",
+              "accepted": true,
+              "dense_score": 0.8701568841934204,
+              "reranker_score": 5.939427375793457
+            },
+            {
+              "id": "medquad_4d68aed313df57fdb515:1",
+              "document_id": "medquad_4d68aed313df57fdb515",
+              "accepted": true,
+              "dense_score": 0.8608731627464294,
+              "reranker_score": 1.1344562768936157
+            },
+            {
+              "id": "medquad_4d68aed313df57fdb515:2",
+              "document_id": "medquad_4d68aed313df57fdb515",
+              "accepted": true,
+              "dense_score": 0.8498367071151733,
+              "reranker_score": 0.25165417790412903
+            },
+            {
+              "id": "medquad_eae25d2bae41a5ab0f1e:1",
+              "document_id": "medquad_eae25d2bae41a5ab0f1e",
+              "accepted": true,
+              "dense_score": 0.8249717950820923,
+              "reranker_score": -4.637816905975342
+            },
+            {
+              "id": "medquad_1e898a8a88a195e1a8f9:1",
+              "document_id": "medquad_1e898a8a88a195e1a8f9",
+              "accepted": true,
+              "dense_score": 0.8233951330184937,
+              "reranker_score": -6.288873195648193
+            }
+          ]
+        },
+        "latency_ms": 42128.75
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_4d68aed313df57fdb515:0",
+          "title": "What are the symptoms of Gilbert syndrome ?",
+          "text": "What are the signs and symptoms of Gilbert syndrome? While many people with Gilbert syndrome never experience any symptoms, mild jaundice may occur if bilirubin levels get high enough. Other possible symptoms may include fatigue, weakness and abdominal pain. Patients may have more side effects from certain drugs such as irinotecan. The Human Phenotype Ontology provides the following list of signs and symptoms for Gilbert syndrome. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Abnormality of the liver 90% Abdominal pain 50% Nausea and vomiting 50% Reduced bone mineral density 7.5% Autosomal recessive inheritance - Jaundice - Unconjugated hyperbilirubinemia - The Human Phenotype",
+          "source_url": "https://rarediseases.info.nih.gov/gard/6507/gilbert-syndrome",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Gilbert syndrome",
+          "source_file": "2_GARD_QA/0002550.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_4d68aed313df57fdb515",
+          "score": 0.8701568841934204,
+          "lexical_score": 0.10470416863702345,
+          "dense_score": 0.8701568841934204,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": 5.939427375793457
+        },
+        {
+          "id": "medquad_4d68aed313df57fdb515:1",
+          "title": "What are the symptoms of Gilbert syndrome ?",
+          "text": "90% Abdominal pain 50% Nausea and vomiting 50% Reduced bone mineral density 7.5% Autosomal recessive inheritance - Jaundice - Unconjugated hyperbilirubinemia - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are",
+          "source_url": "https://rarediseases.info.nih.gov/gard/6507/gilbert-syndrome",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Gilbert syndrome",
+          "source_file": "2_GARD_QA/0002550.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_4d68aed313df57fdb515",
+          "score": 0.8608731627464294,
+          "lexical_score": 0.06453585898145325,
+          "dense_score": 0.8608731627464294,
+          "accepted": true,
+          "e5_rank": 2,
+          "reranker_score": 1.1344562768936157
+        }
+      ],
+      "reference_text": "What are the signs and symptoms of Gilbert syndrome? While many people with Gilbert syndrome never experience any symptoms,  mild jaundice may occur if bilirubin levels get high enough. Other possible symptoms may include fatigue, weakness and abdominal pain.  Patients may have more side effects from certain drugs such as irinotecan. The Human Phenotype Ontology provides the following list of signs and symptoms for Gilbert syndrome. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Abnormality of the liver 90% Abdominal pain 50% Nausea and vomiting 50% Reduced bone mineral density 7.5% Autosomal recessive inheritance - Jaundice - Unconjugated hyperbilirubinemia - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+      "evidence_quotes": [
+        "many people with Gilbert syndrome never experience any symptoms",
+        "mild jaundice may occur"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N12",
+      "category": "covered",
+      "question": "Le document établit-il une cause certaine pour l’encéphalite de Hashimoto ?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": false,
+      "wall_seconds": 18.286,
+      "result": {
+        "trace_id": "82894b2a1a734a14a2e217bc4bae0eda",
+        "answer": "Les passages disponibles ne suffisent pas pour répondre à cette question.",
+        "status": "abstain",
+        "mode": "abstain",
+        "sources": [],
+        "intent": {
+          "label": "causes",
+          "score": 0.184,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 440.12,
+          "retrieval_ms": 521.29,
+          "candidate_order": [
+            {
+              "id": "medquad_5f82243b60abbdbe2b15:0",
+              "document_id": "medquad_5f82243b60abbdbe2b15",
+              "accepted": true,
+              "dense_score": 0.8467662930488586,
+              "reranker_score": 4.262706756591797
+            },
+            {
+              "id": "medquad_a0082142d890283dbae5:1",
+              "document_id": "medquad_a0082142d890283dbae5",
+              "accepted": true,
+              "dense_score": 0.8111159205436707,
+              "reranker_score": -1.647475004196167
+            },
+            {
+              "id": "medquad_a0082142d890283dbae5:0",
+              "document_id": "medquad_a0082142d890283dbae5",
+              "accepted": true,
+              "dense_score": 0.8225194811820984,
+              "reranker_score": -2.317516565322876
+            },
+            {
+              "id": "medquad_104d7425d6e87eccc709:0",
+              "document_id": "medquad_104d7425d6e87eccc709",
+              "accepted": true,
+              "dense_score": 0.8039179444313049,
+              "reranker_score": -3.5998475551605225
+            },
+            {
+              "id": "medquad_a40484e254303a4a7cee:1",
+              "document_id": "medquad_a40484e254303a4a7cee",
+              "accepted": false,
+              "dense_score": 0.7991877794265747,
+              "reranker_score": -8.89549732208252
+            }
+          ]
+        },
+        "latency_ms": 18285.82
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_5f82243b60abbdbe2b15:0",
+          "title": "What causes Hashimoto's encephalitis ?",
+          "text": "What causes Hashimoto's encephalitis? The exact cause of Hashimoto's encephalitis (HE) is unknown, but is thought to relate to autoimmune or other autoinflammatory processes. While it is associated with Hashimoto's thyroiditis, the exact nature of the relationship between the two conditions is unclear. It does not appear to be directly related to hypothyroidism or hyperthyroidism.",
+          "source_url": "https://rarediseases.info.nih.gov/gard/8570/hashimotos-encephalitis",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "causes",
+          "focus": "Hashimoto's encephalitis",
+          "source_file": "2_GARD_QA/0002735.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_5f82243b60abbdbe2b15",
+          "score": 0.8467662930488586,
+          "lexical_score": 0.12077762899010519,
+          "dense_score": 0.8467662930488586,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": 4.262706756591797
+        },
+        {
+          "id": "medquad_a0082142d890283dbae5:1",
+          "title": "What causes Hashimoto's syndrome ?",
+          "text": "may trigger the condition in people at risk may include changes in sex hormones (particularly in women), viral infections, certain medications, exposure to ionizing radiation, and excess consumption of iodine (a substance involved in thyroid hormone production).",
+          "source_url": "https://rarediseases.info.nih.gov/gard/6570/hashimotos-syndrome",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "causes",
+          "focus": "Hashimoto's syndrome",
+          "source_file": "2_GARD_QA/0002736.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_a0082142d890283dbae5",
+          "score": 0.8111159205436707,
+          "lexical_score": 0.06129267981396352,
+          "dense_score": 0.8111159205436707,
+          "accepted": true,
+          "e5_rank": 3,
+          "reranker_score": -1.647475004196167
+        }
+      ],
+      "reference_text": "What causes Hashimoto's encephalitis? The exact cause of Hashimoto's encephalitis (HE) is unknown, but is thought to relate to autoimmune or other autoinflammatory processes. While it is associated with Hashimoto's thyroiditis, the exact nature of the relationship between the two conditions is unclear. It does not appear to be directly related to hypothyroidism or hyperthyroidism.",
+      "evidence_quotes": [
+        "The exact cause of Hashimoto's encephalitis (HE) is unknown",
+        "is thought to relate to autoimmune or other autoinflammatory processes"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N13",
+      "category": "covered",
+      "question": "How does pseudocholinesterase deficiency affect the response to certain muscle relaxants used during general anesthesia?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 43.166,
+      "result": {
+        "trace_id": "c06591a6dcaa46b49aa07e24855f6463",
+        "answer": "Pseudocholinesterase deficiency results in increased sensitivity to certain muscle relaxant drugs used during general anesthesia, such as succinylcholine and mivacurium, causing affected individuals to be unable to move or breathe on their own for several hours after the drugs are administered. [1]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_54ebf48cbd0c3086450a:0",
+            "document_id": "medquad_54ebf48cbd0c3086450a",
+            "title": "What is (are) pseudocholinesterase deficiency ?",
+            "url": "https://ghr.nlm.nih.gov/condition/pseudocholinesterase-deficiency",
+            "text": "Pseudocholinesterase deficiency is a condition that results in increased sensitivity to certain muscle relaxant drugs used during general anesthesia, called choline esters. These fast-acting drugs, such as succinylcholine and mivacurium, are given to relax the muscles used for movement (skeletal muscles), including the muscles involved in breathing. The drugs are often employed for brief surgical procedures or in emergencies when a breathing tube must be inserted quickly. Normally, these drugs are broken down (metabolized) by the body within a few minutes of being administered, at which time the muscles can move again. However, people with pseudocholinesterase deficiency may not be able to move or breathe on their own for a few hours after the drugs are administered. Affected individuals must be supported with a machine to help them breathe (mechanical ventilation) until the drugs are cleared from the body. People",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_54ebf48cbd0c3086450a:1",
+            "document_id": "medquad_54ebf48cbd0c3086450a",
+            "title": "What is (are) pseudocholinesterase deficiency ?",
+            "url": "https://ghr.nlm.nih.gov/condition/pseudocholinesterase-deficiency",
+            "text": "are administered. Affected individuals must be supported with a machine to help them breathe (mechanical ventilation) until the drugs are cleared from the body. People with pseudocholinesterase deficiency may also have increased sensitivity to certain other drugs, including the local anesthetic procaine, and to specific agricultural pesticides. The condition causes no other signs or symptoms and is usually not discovered until an abnormal drug reaction occurs.",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "hors_domaine",
+          "score": 0.176,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 561.95,
+          "retrieval_ms": 695.57,
+          "candidate_order": [
+            {
+              "id": "medquad_54ebf48cbd0c3086450a:0",
+              "document_id": "medquad_54ebf48cbd0c3086450a",
+              "accepted": true,
+              "dense_score": 0.9170719385147095,
+              "reranker_score": 10.874105453491211
+            },
+            {
+              "id": "medquad_54ebf48cbd0c3086450a:1",
+              "document_id": "medquad_54ebf48cbd0c3086450a",
+              "accepted": true,
+              "dense_score": 0.884324848651886,
+              "reranker_score": 0.7621364593505859
+            },
+            {
+              "id": "medquad_7d9c7870ce5e8fc10bea:1",
+              "document_id": "medquad_7d9c7870ce5e8fc10bea",
+              "accepted": true,
+              "dense_score": 0.8240740895271301,
+              "reranker_score": -7.1070237159729
+            },
+            {
+              "id": "medquad_1bfcc6e2f6f263bcca50:1",
+              "document_id": "medquad_1bfcc6e2f6f263bcca50",
+              "accepted": true,
+              "dense_score": 0.8336573243141174,
+              "reranker_score": -9.194722175598145
+            },
+            {
+              "id": "medquad_cc85640e12516c5a8c21:1",
+              "document_id": "medquad_cc85640e12516c5a8c21",
+              "accepted": true,
+              "dense_score": 0.830431342124939,
+              "reranker_score": -9.448366165161133
+            }
+          ]
+        },
+        "latency_ms": 43166.23
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_54ebf48cbd0c3086450a:0",
+          "title": "What is (are) pseudocholinesterase deficiency ?",
+          "text": "Pseudocholinesterase deficiency is a condition that results in increased sensitivity to certain muscle relaxant drugs used during general anesthesia, called choline esters. These fast-acting drugs, such as succinylcholine and mivacurium, are given to relax the muscles used for movement (skeletal muscles), including the muscles involved in breathing. The drugs are often employed for brief surgical procedures or in emergencies when a breathing tube must be inserted quickly. Normally, these drugs are broken down (metabolized) by the body within a few minutes of being administered, at which time the muscles can move again. However, people with pseudocholinesterase deficiency may not be able to move or breathe on their own for a few hours after the drugs are administered. Affected individuals must be supported with a machine to help them breathe (mechanical ventilation) until the drugs are cleared from the body. People",
+          "source_url": "https://ghr.nlm.nih.gov/condition/pseudocholinesterase-deficiency",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "pseudocholinesterase deficiency",
+          "source_file": "3_GHR_QA/0000843.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_54ebf48cbd0c3086450a",
+          "score": 0.9170719385147095,
+          "lexical_score": 0.2566862792410602,
+          "dense_score": 0.9170719385147095,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": 10.874105453491211
+        },
+        {
+          "id": "medquad_54ebf48cbd0c3086450a:1",
+          "title": "What is (are) pseudocholinesterase deficiency ?",
+          "text": "are administered. Affected individuals must be supported with a machine to help them breathe (mechanical ventilation) until the drugs are cleared from the body. People with pseudocholinesterase deficiency may also have increased sensitivity to certain other drugs, including the local anesthetic procaine, and to specific agricultural pesticides. The condition causes no other signs or symptoms and is usually not discovered until an abnormal drug reaction occurs.",
+          "source_url": "https://ghr.nlm.nih.gov/condition/pseudocholinesterase-deficiency",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "pseudocholinesterase deficiency",
+          "source_file": "3_GHR_QA/0000843.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_54ebf48cbd0c3086450a",
+          "score": 0.884324848651886,
+          "lexical_score": 0.1485158452669306,
+          "dense_score": 0.884324848651886,
+          "accepted": true,
+          "e5_rank": 2,
+          "reranker_score": 0.7621364593505859
+        }
+      ],
+      "reference_text": "Pseudocholinesterase deficiency is a condition that results in increased sensitivity to certain muscle relaxant drugs used during general anesthesia, called choline esters. These fast-acting drugs, such as succinylcholine and mivacurium, are given to relax the muscles used for movement (skeletal muscles), including the muscles involved in breathing. The drugs are often employed for brief surgical procedures or in emergencies when a breathing tube must be inserted quickly. Normally, these drugs are broken down (metabolized) by the body within a few minutes of being administered, at which time the muscles can move again. However, people with pseudocholinesterase deficiency may not be able to move or breathe on their own for a few hours after the drugs are administered. Affected individuals must be supported with a machine to help them breathe (mechanical ventilation) until the drugs are cleared from the body.  People with pseudocholinesterase deficiency may also have increased sensitivity to certain other drugs, including the local anesthetic procaine, and to specific agricultural pesticides. The condition causes no other signs or symptoms and is usually not discovered until an abnormal drug reaction occurs.",
+      "evidence_quotes": [
+        "increased sensitivity to certain muscle relaxant drugs used during general anesthesia",
+        "may not be able to move or breathe on their own for a few hours"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N14",
+      "category": "covered",
+      "question": "Which neurological or developmental findings are listed for carnosinemia?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 45.591,
+      "result": {
+        "trace_id": "d68b8a56116d478891a6840b17b9c973",
+        "answer": "Les signes et symptômes de la carnosinémie incluent l'altération cognitive, le régressissement développemental et les anomalies EEG. [1]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_79d17fb99bac730b31d3:0",
+            "document_id": "medquad_79d17fb99bac730b31d3",
+            "title": "What are the symptoms of Carnosinemia ?",
+            "url": "https://rarediseases.info.nih.gov/gard/6001/carnosinemia",
+            "text": "What are the signs and symptoms of Carnosinemia? The Human Phenotype Ontology provides the following list of signs and symptoms for Carnosinemia. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Aminoaciduria 90% Cognitive impairment 90% Developmental regression 90% EEG abnormality 90% Seizures 90% Autosomal recessive inheritance - Carnosinuria - Generalized myoclonic seizures - Intellectual disability - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_f5a5c82df44baa90ab60:0",
+            "document_id": "medquad_f5a5c82df44baa90ab60",
+            "title": "What is (are) pantothenate kinase-associated neurodegeneration ?",
+            "url": "https://ghr.nlm.nih.gov/condition/pantothenate-kinase-associated-neurodegeneration",
+            "text": "Pantothenate kinase-associated neurodegeneration (formerly called Hallervorden-Spatz syndrome) is a disorder of the nervous system. This condition is characterized by progressive difficulty with movement, typically beginning in childhood. Movement abnormalities include involuntary muscle spasms, rigidity, and trouble with walking that worsens over time. Many people with this condition also develop problems with speech (dysarthria), and some develop vision loss. Additionally, affected individuals may experience a loss of intellectual function (dementia) and psychiatric symptoms such as behavioral problems, personality changes, and depression. Pantothenate kinase-associated neurodegeneration is characterized by an abnormal buildup of iron in certain areas of the brain. A particular change called the eye-of-the-tiger sign, which indicates an accumulation of iron, is typically seen on magnetic resonance imaging (MRI) scans of the brain in people with this disorder. Researchers have described classic and atypical forms of pantothenate kinase-associated neurodegeneration. The classic",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "hors_domaine",
+          "score": 0.176,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 624.78,
+          "retrieval_ms": 705.83,
+          "candidate_order": [
+            {
+              "id": "medquad_79d17fb99bac730b31d3:0",
+              "document_id": "medquad_79d17fb99bac730b31d3",
+              "accepted": true,
+              "dense_score": 0.8604583740234375,
+              "reranker_score": -1.9434243440628052
+            },
+            {
+              "id": "medquad_f5a5c82df44baa90ab60:0",
+              "document_id": "medquad_f5a5c82df44baa90ab60",
+              "accepted": true,
+              "dense_score": 0.8501749634742737,
+              "reranker_score": -8.127700805664062
+            },
+            {
+              "id": "medquad_ef18b8f5bc992a301ff6:2",
+              "document_id": "medquad_ef18b8f5bc992a301ff6",
+              "accepted": true,
+              "dense_score": 0.8450011014938354,
+              "reranker_score": -8.423800468444824
+            },
+            {
+              "id": "medquad_ef18b8f5bc992a301ff6:0",
+              "document_id": "medquad_ef18b8f5bc992a301ff6",
+              "accepted": true,
+              "dense_score": 0.8473352789878845,
+              "reranker_score": -8.844685554504395
+            },
+            {
+              "id": "medquad_ef18b8f5bc992a301ff6:1",
+              "document_id": "medquad_ef18b8f5bc992a301ff6",
+              "accepted": true,
+              "dense_score": 0.8440288305282593,
+              "reranker_score": -8.977537155151367
+            }
+          ]
+        },
+        "latency_ms": 45590.66
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_79d17fb99bac730b31d3:0",
+          "title": "What are the symptoms of Carnosinemia ?",
+          "text": "What are the signs and symptoms of Carnosinemia? The Human Phenotype Ontology provides the following list of signs and symptoms for Carnosinemia. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Aminoaciduria 90% Cognitive impairment 90% Developmental regression 90% EEG abnormality 90% Seizures 90% Autosomal recessive inheritance - Carnosinuria - Generalized myoclonic seizures - Intellectual disability - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the",
+          "source_url": "https://rarediseases.info.nih.gov/gard/6001/carnosinemia",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Carnosinemia",
+          "source_file": "2_GARD_QA/0000969.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_79d17fb99bac730b31d3",
+          "score": 0.8604583740234375,
+          "lexical_score": 0.22872824073801296,
+          "dense_score": 0.8604583740234375,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": -1.9434243440628052
+        },
+        {
+          "id": "medquad_f5a5c82df44baa90ab60:0",
+          "title": "What is (are) pantothenate kinase-associated neurodegeneration ?",
+          "text": "Pantothenate kinase-associated neurodegeneration (formerly called Hallervorden-Spatz syndrome) is a disorder of the nervous system. This condition is characterized by progressive difficulty with movement, typically beginning in childhood. Movement abnormalities include involuntary muscle spasms, rigidity, and trouble with walking that worsens over time. Many people with this condition also develop problems with speech (dysarthria), and some develop vision loss. Additionally, affected individuals may experience a loss of intellectual function (dementia) and psychiatric symptoms such as behavioral problems, personality changes, and depression. Pantothenate kinase-associated neurodegeneration is characterized by an abnormal buildup of iron in certain areas of the brain. A particular change called the eye-of-the-tiger sign, which indicates an accumulation of iron, is typically seen on magnetic resonance imaging (MRI) scans of the brain in people with this disorder. Researchers have described classic and atypical forms of pantothenate kinase-associated neurodegeneration. The classic",
+          "source_url": "https://ghr.nlm.nih.gov/condition/pantothenate-kinase-associated-neurodegeneration",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "pantothenate kinase-associated neurodegeneration",
+          "source_file": "3_GHR_QA/0000770.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_f5a5c82df44baa90ab60",
+          "score": 0.8501749634742737,
+          "lexical_score": 0.005143793870065962,
+          "dense_score": 0.8501749634742737,
+          "accepted": true,
+          "e5_rank": 2,
+          "reranker_score": -8.127700805664062
+        }
+      ],
+      "reference_text": "What are the signs and symptoms of Carnosinemia? The Human Phenotype Ontology provides the following list of signs and symptoms for Carnosinemia. If the information is available, the table below includes how often the symptom is seen in people with this condition. You can use the MedlinePlus Medical Dictionary to look up the definitions for these medical terms. Signs and Symptoms Approximate number of patients (when available) Aminoaciduria 90% Cognitive impairment 90% Developmental regression 90% EEG abnormality 90% Seizures 90% Autosomal recessive inheritance - Carnosinuria - Generalized myoclonic seizures - Intellectual disability - The Human Phenotype Ontology (HPO) has collected information on how often a sign or symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+      "evidence_quotes": [
+        "Cognitive impairment",
+        "Developmental regression",
+        "EEG abnormality",
+        "Seizures"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "N15",
+      "category": "covered",
+      "question": "Pour la maladie de Ménétrier, le document décrit-il des causes établies ou des associations possibles ?",
+      "expected_statuses": [
+        "answered"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 48.074,
+      "result": {
+        "trace_id": "09d3167965da490591178cc017ce827f",
+        "answer": "Le document indique que la cause exacte de la maladie de Ménétrier est inconnue, mais elle a été associée à l'infection par le virus cytomegalovirus chez les enfants et par H. pylori chez les adultes. [1]",
+        "status": "answered",
+        "mode": "ollama",
+        "sources": [
+          {
+            "citation": 1,
+            "id": "medquad_0c2149cc2351f348ebf4:0",
+            "document_id": "medquad_0c2149cc2351f348ebf4",
+            "title": "What causes Menetrier disease ?",
+            "url": "https://rarediseases.info.nih.gov/gard/2436/menetrier-disease",
+            "text": "What causes Mntrier disease? The exact cause of Mntrier disease is unknown. However, it has been associated with cytomegalovirus (CMV) infection in children and Heliobacter pylori (H. pylori) infection in adults. In addition, some have suggested that overexpression of a type of growth factor called the transforming growth factor-, which is found in a specific part of the stomach, the superficial gastric epithelium, might play a role.",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          },
+          {
+            "citation": 2,
+            "id": "medquad_d031a4f86519acfa9599:0",
+            "document_id": "medquad_d031a4f86519acfa9599",
+            "title": "What is (are) VACTERL association ?",
+            "url": "https://rarediseases.info.nih.gov/gard/5443/vacterl-association",
+            "text": "VACTERL association is a non-random association of birth defects that affects multiple parts of the body. The term VACTERL is an acronym with each letter representing the first letter of one of the more common findings seen in affected individuals: (V) = vertebral abnormalities; (A) = anal atresia; (C) = cardiac (heart) defects; (T) = tracheal anomalies including tracheoesophageal (TE) fistula; (E) = esophageal atresia; (R) = renal (kidney) and radial (thumb side of hand) abnormalities; and (L) = other limb abnormalities. Other features may include (less frequently) growth deficiencies and failure to thrive; facial asymmetry (hemifacial microsomia); external ear malformations; intestinal malrotation; and genital anomalies. Intelligence is usually normal. The exact cause of VACTERL association is unknown; most cases occur randomly, for no apparent reason. In rare cases, VACTERL association has occurred in more than one family member.",
+            "language": "en",
+            "content_kind": "medquad",
+            "retrieved_at": "inconnue"
+          }
+        ],
+        "intent": {
+          "label": "causes",
+          "score": 0.207,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 590.82,
+          "retrieval_ms": 703.4,
+          "candidate_order": [
+            {
+              "id": "medquad_0c2149cc2351f348ebf4:0",
+              "document_id": "medquad_0c2149cc2351f348ebf4",
+              "accepted": true,
+              "dense_score": 0.8147222995758057,
+              "reranker_score": -1.2170535326004028
+            },
+            {
+              "id": "medquad_d031a4f86519acfa9599:0",
+              "document_id": "medquad_d031a4f86519acfa9599",
+              "accepted": true,
+              "dense_score": 0.813476026058197,
+              "reranker_score": -4.472597122192383
+            },
+            {
+              "id": "medquad_0aa4073677cc508d400a:2",
+              "document_id": "medquad_0aa4073677cc508d400a",
+              "accepted": true,
+              "dense_score": 0.8114016652107239,
+              "reranker_score": -6.355286121368408
+            },
+            {
+              "id": "medquad_0aa4073677cc508d400a:1",
+              "document_id": "medquad_0aa4073677cc508d400a",
+              "accepted": true,
+              "dense_score": 0.8113728761672974,
+              "reranker_score": -6.702911853790283
+            },
+            {
+              "id": "medquad_54ebf48cbd0c3086450a:1",
+              "document_id": "medquad_54ebf48cbd0c3086450a",
+              "accepted": true,
+              "dense_score": 0.8133001923561096,
+              "reranker_score": -8.377119064331055
+            }
+          ]
+        },
+        "latency_ms": 48073.61
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_0c2149cc2351f348ebf4:0",
+          "title": "What causes Menetrier disease ?",
+          "text": "What causes Mntrier disease? The exact cause of Mntrier disease is unknown. However, it has been associated with cytomegalovirus (CMV) infection in children and Heliobacter pylori (H. pylori) infection in adults. In addition, some have suggested that overexpression of a type of growth factor called the transforming growth factor-, which is found in a specific part of the stomach, the superficial gastric epithelium, might play a role.",
+          "source_url": "https://rarediseases.info.nih.gov/gard/2436/menetrier-disease",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "causes",
+          "focus": "Menetrier disease",
+          "source_file": "2_GARD_QA/0003909.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_0c2149cc2351f348ebf4",
+          "score": 0.8147222995758057,
+          "lexical_score": 0.041883049101246746,
+          "dense_score": 0.8147222995758057,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": -1.2170535326004028
+        },
+        {
+          "id": "medquad_d031a4f86519acfa9599:0",
+          "title": "What is (are) VACTERL association ?",
+          "text": "VACTERL association is a non-random association of birth defects that affects multiple parts of the body. The term VACTERL is an acronym with each letter representing the first letter of one of the more common findings seen in affected individuals: (V) = vertebral abnormalities; (A) = anal atresia; (C) = cardiac (heart) defects; (T) = tracheal anomalies including tracheoesophageal (TE) fistula; (E) = esophageal atresia; (R) = renal (kidney) and radial (thumb side of hand) abnormalities; and (L) = other limb abnormalities. Other features may include (less frequently) growth deficiencies and failure to thrive; facial asymmetry (hemifacial microsomia); external ear malformations; intestinal malrotation; and genital anomalies. Intelligence is usually normal. The exact cause of VACTERL association is unknown; most cases occur randomly, for no apparent reason. In rare cases, VACTERL association has occurred in more than one family member.",
+          "source_url": "https://rarediseases.info.nih.gov/gard/5443/vacterl-association",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "VACTERL association",
+          "source_file": "2_GARD_QA/0006312.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_d031a4f86519acfa9599",
+          "score": 0.813476026058197,
+          "lexical_score": 0.0,
+          "dense_score": 0.813476026058197,
+          "accepted": true,
+          "e5_rank": 2,
+          "reranker_score": -4.472597122192383
+        }
+      ],
+      "reference_text": "What causes Mntrier disease? The exact cause of Mntrier disease is unknown.  However, it has been associated with cytomegalovirus (CMV) infection in children and Heliobacter pylori (H. pylori) infection in adults. In addition, some have suggested that overexpression of a type of growth factor called the transforming growth factor-, which is found in a specific part of the stomach, the superficial gastric epithelium, might play a role.",
+      "evidence_quotes": [
+        "The exact cause of Mntrier disease is unknown",
+        "has been associated with cytomegalovirus (CMV) infection in children"
+      ],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "M01",
+      "category": "missing_personal_information",
+      "question": "Quel résultat exact indique le compte rendu de mon IRM passée lundi ?",
+      "expected_statuses": [
+        "abstain",
+        "clarify",
+        "personal"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 18.739,
+      "result": {
+        "trace_id": "3bcb806e65cd4e43a265607d34c11861",
+        "answer": "Les passages disponibles ne suffisent pas pour répondre à cette question.",
+        "status": "abstain",
+        "mode": "abstain",
+        "sources": [],
+        "intent": {
+          "label": "prevention",
+          "score": 0.239,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 1,
+          "rerank_ms": 427.09,
+          "retrieval_ms": 530.68,
+          "candidate_order": [
+            {
+              "id": "medquad_2cf364277b7b616ae435:1",
+              "document_id": "medquad_2cf364277b7b616ae435",
+              "accepted": false,
+              "dense_score": 0.7982031106948853,
+              "reranker_score": -7.939763069152832
+            },
+            {
+              "id": "medquad_8978c9efe11be1300e81:1",
+              "document_id": "medquad_8978c9efe11be1300e81",
+              "accepted": true,
+              "dense_score": 0.8007926940917969,
+              "reranker_score": -8.033459663391113
+            },
+            {
+              "id": "medquad_ae0f2c402034437f6abd:2",
+              "document_id": "medquad_ae0f2c402034437f6abd",
+              "accepted": false,
+              "dense_score": 0.7987959980964661,
+              "reranker_score": -9.025193214416504
+            },
+            {
+              "id": "medquad_5de4fdc8c1558ecd3dc4:1",
+              "document_id": "medquad_5de4fdc8c1558ecd3dc4",
+              "accepted": false,
+              "dense_score": 0.7964605093002319,
+              "reranker_score": -9.14277458190918
+            },
+            {
+              "id": "medquad_71f220aececb82eacd30:1",
+              "document_id": "medquad_71f220aececb82eacd30",
+              "accepted": false,
+              "dense_score": 0.7982151508331299,
+              "reranker_score": -9.168919563293457
+            }
+          ]
+        },
+        "latency_ms": 18739.41
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_8978c9efe11be1300e81:1",
+          "title": "What are the symptoms of Erythroderma lethal congenital ?",
+          "text": "symptom occurs in a condition. Much of this information comes from Orphanet, a European rare disease database. The frequency of a sign or symptom is usually listed as a rough estimate of the percentage of patients who have that feature. The frequency may also be listed as a fraction. The first number of the fraction is how many people had the symptom, and the second number is the total number of people who were examined in one study. For example, a frequency of 25/25 means that in a study of 25 people all patients were found to have that symptom. Because these frequencies are based on a specific study, the fractions may be different if another group of patients are examined. Sometimes, no information on frequency is available. In these cases, the sign or symptom may be rare or common.",
+          "source_url": "https://rarediseases.info.nih.gov/gard/2192/erythroderma-lethal-congenital",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "symptoms",
+          "focus": "Erythroderma lethal congenital",
+          "source_file": "2_GARD_QA/0002160.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_8978c9efe11be1300e81",
+          "score": 0.8007926940917969,
+          "lexical_score": 0.0,
+          "dense_score": 0.8007926940917969,
+          "accepted": true,
+          "e5_rank": 1,
+          "reranker_score": -8.033459663391113
+        }
+      ],
+      "reference_text": "",
+      "evidence_quotes": [],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "M02",
+      "category": "missing_personal_information",
+      "question": "Quelle allergie est inscrite dans mon dossier hospitalier ?",
+      "expected_statuses": [
+        "abstain",
+        "clarify",
+        "personal"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 25.594,
+      "result": {
+        "trace_id": "465df4d488894dc487900f05deac3517",
+        "answer": "Les passages disponibles ne suffisent pas pour répondre à cette question.",
+        "status": "abstain",
+        "mode": "abstain",
+        "sources": [],
+        "intent": {
+          "label": "hors_domaine",
+          "score": 0.232,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 570.55,
+          "retrieval_ms": 652.02,
+          "candidate_order": [
+            {
+              "id": "asthme_declencheurs:0",
+              "document_id": "asthme_declencheurs",
+              "accepted": true,
+              "dense_score": 0.8151002526283264,
+              "reranker_score": -6.075009346008301
+            },
+            {
+              "id": "medquad_ccc98a74f7ebc65aa6c4:0",
+              "document_id": "medquad_ccc98a74f7ebc65aa6c4",
+              "accepted": true,
+              "dense_score": 0.8008536100387573,
+              "reranker_score": -6.215449810028076
+            },
+            {
+              "id": "asthme_definition:0",
+              "document_id": "asthme_definition",
+              "accepted": true,
+              "dense_score": 0.8173682689666748,
+              "reranker_score": -6.733582496643066
+            },
+            {
+              "id": "medquad_2a0a2abc1ffaa6fa20af:1",
+              "document_id": "medquad_2a0a2abc1ffaa6fa20af",
+              "accepted": true,
+              "dense_score": 0.8043113946914673,
+              "reranker_score": -7.515328884124756
+            },
+            {
+              "id": "medquad_396ecd2f71c0bb6a8026:1",
+              "document_id": "medquad_396ecd2f71c0bb6a8026",
+              "accepted": true,
+              "dense_score": 0.8031264543533325,
+              "reranker_score": -8.438934326171875
+            }
+          ]
+        },
+        "latency_ms": 25593.99
+      },
+      "generation_passages": [
+        {
+          "id": "asthme_declencheurs:0",
+          "title": "Asthme : facteurs déclenchants",
+          "text": "Chez certaines personnes asthmatiques, la fumée, la poussière, les pollens ou des infections respiratoires peuvent déclencher ou aggraver les symptômes. Les facteurs déclenchants varient selon les personnes.",
+          "source_url": "https://www.who.int/news-room/fact-sheets/detail/asthma",
+          "language": "fr",
+          "license_status": "Synthèse pédagogique originale ; texte source non redistribué",
+          "content_kind": "synthese_pedagogique_non_validee_cliniquement",
+          "retrieved_at": "2026-11-15",
+          "approved": true,
+          "document_id": "asthme_declencheurs",
+          "score": 0.8151002526283264,
+          "lexical_score": 0.0,
+          "dense_score": 0.8151002526283264,
+          "accepted": true,
+          "e5_rank": 2,
+          "reranker_score": -6.075009346008301
+        },
+        {
+          "id": "medquad_ccc98a74f7ebc65aa6c4:0",
+          "title": "What is (are) Eosinophilic enteropathy ?",
+          "text": "Eosinophilic enteropathy is a condition that causes a type of white blood cell called an eosinophil to build up in the gastrointestinal system and in the blood. Eosinophils play a role in the bodys immune response by releasing toxins. Eosinophils are associated with allergic-type reactions, but their specific function is largely unknown.When eosinophils build up in the gastrointestinal tract, this begins to affect the body by causing polyps, tissue break down, inflammation, and ulcers. Eosinophilic enteropathy can occur in children or adults and is characterized by intolerance to some foods. Eosinophilic enteropathy can affect any part of the gastrointestinal tract, and is often named by the part affected: colon (colitis), esophagus (esophagitis), stomach (gastritis), or both the stomach and small intestine (gastroenteritis).",
+          "source_url": "https://rarediseases.info.nih.gov/gard/9142/eosinophilic-enteropathy",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "Eosinophilic enteropathy",
+          "source_file": "2_GARD_QA/0002113.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_ccc98a74f7ebc65aa6c4",
+          "score": 0.8008536100387573,
+          "lexical_score": 0.0,
+          "dense_score": 0.8008536100387573,
+          "accepted": true,
+          "e5_rank": 5,
+          "reranker_score": -6.215449810028076
+        }
+      ],
+      "reference_text": "",
+      "evidence_quotes": [],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "M03",
+      "category": "missing_personal_information",
+      "question": "What was the exact hemoglobin value in my most recent blood test?",
+      "expected_statuses": [
+        "abstain",
+        "clarify",
+        "personal"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 35.498,
+      "result": {
+        "trace_id": "bca8b3bf19334b22af0428cb61f327b4",
+        "answer": "Les passages disponibles ne suffisent pas pour répondre à cette question.",
+        "status": "abstain",
+        "mode": "abstain",
+        "sources": [],
+        "intent": {
+          "label": "hors_domaine",
+          "score": 0.176,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "applied",
+          "candidate_count": 5,
+          "selected_count": 2,
+          "rerank_ms": 553.79,
+          "retrieval_ms": 647.81,
+          "candidate_order": [
+            {
+              "id": "medquad_16347f8fedb7ff2bf878:0",
+              "document_id": "medquad_16347f8fedb7ff2bf878",
+              "accepted": true,
+              "dense_score": 0.8579453229904175,
+              "reranker_score": -9.159164428710938
+            },
+            {
+              "id": "medquad_f304b95da9e69e3ff836:0",
+              "document_id": "medquad_f304b95da9e69e3ff836",
+              "accepted": true,
+              "dense_score": 0.8520982265472412,
+              "reranker_score": -9.285980224609375
+            },
+            {
+              "id": "medquad_16347f8fedb7ff2bf878:1",
+              "document_id": "medquad_16347f8fedb7ff2bf878",
+              "accepted": true,
+              "dense_score": 0.858646810054779,
+              "reranker_score": -9.456011772155762
+            },
+            {
+              "id": "medquad_16347f8fedb7ff2bf878:2",
+              "document_id": "medquad_16347f8fedb7ff2bf878",
+              "accepted": true,
+              "dense_score": 0.8524220585823059,
+              "reranker_score": -9.981828689575195
+            },
+            {
+              "id": "medquad_0c5dfa09a60f0a8b7b42:1",
+              "document_id": "medquad_0c5dfa09a60f0a8b7b42",
+              "accepted": true,
+              "dense_score": 0.8532595038414001,
+              "reranker_score": -10.056842803955078
+            }
+          ]
+        },
+        "latency_ms": 35498.05
+      },
+      "generation_passages": [
+        {
+          "id": "medquad_16347f8fedb7ff2bf878:0",
+          "title": "What is (are) paroxysmal nocturnal hemoglobinuria ?",
+          "text": "Paroxysmal nocturnal hemoglobinuria is an acquired disorder that leads to the premature death and impaired production of blood cells. The disorder affects red blood cells (erythrocytes), which carry oxygen; white blood cells (leukocytes), which protect the body from infection; and platelets (thrombocytes), which are involved in blood clotting. Paroxysmal nocturnal hemoglobinuria affects both sexes equally, and can occur at any age, although it is most often diagnosed in young adulthood. People with paroxysmal nocturnal hemoglobinuria have sudden, recurring episodes of symptoms (paroxysmal symptoms), which may be triggered by stresses on the body, such as infections or physical exertion. During these episodes, red blood cells are prematurely destroyed (hemolysis). Affected individuals may pass dark-colored urine due to the presence of hemoglobin, the oxygen-carrying protein in blood. The abnormal presence of hemoglobin in the urine is called hemoglobinuria. In many, but not",
+          "source_url": "https://ghr.nlm.nih.gov/condition/paroxysmal-nocturnal-hemoglobinuria",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "paroxysmal nocturnal hemoglobinuria",
+          "source_file": "3_GHR_QA/0000775.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_16347f8fedb7ff2bf878",
+          "score": 0.8579453229904175,
+          "lexical_score": 0.06335732941560891,
+          "dense_score": 0.8579453229904175,
+          "accepted": true,
+          "e5_rank": 2,
+          "reranker_score": -9.159164428710938
+        },
+        {
+          "id": "medquad_f304b95da9e69e3ff836:0",
+          "title": "What is (are) beta thalassemia ?",
+          "text": "Beta thalassemia is a blood disorder that reduces the production of hemoglobin. Hemoglobin is the iron-containing protein in red blood cells that carries oxygen to cells throughout the body. In people with beta thalassemia, low levels of hemoglobin lead to a lack of oxygen in many parts of the body. Affected individuals also have a shortage of red blood cells (anemia), which can cause pale skin, weakness, fatigue, and more serious complications. People with beta thalassemia are at an increased risk of developing abnormal blood clots. Beta thalassemia is classified into two types depending on the severity of symptoms: thalassemia major (also known as Cooley's anemia) and thalassemia intermedia. Of the two types, thalassemia major is more severe. The signs and symptoms of thalassemia major appear within the first 2 years of life. Children develop life-threatening anemia. They do not",
+          "source_url": "https://ghr.nlm.nih.gov/condition/beta-thalassemia",
+          "language": "en",
+          "license_status": "MedQuAD CC BY 4.0 ; vérifier les droits de la source et attribuer les auteurs",
+          "content_kind": "medquad",
+          "approved": true,
+          "question_type": "information",
+          "focus": "beta thalassemia",
+          "source_file": "3_GHR_QA/0000119.xml",
+          "review_status": "technical_filter_only",
+          "clinical_review": false,
+          "url_checked": false,
+          "usage_scope": "local_academic_experiment",
+          "document_id": "medquad_f304b95da9e69e3ff836",
+          "score": 0.8520982265472412,
+          "lexical_score": 0.0711467827833796,
+          "dense_score": 0.8520982265472412,
+          "accepted": true,
+          "e5_rank": 5,
+          "reranker_score": -9.285980224609375
+        }
+      ],
+      "reference_text": "",
+      "evidence_quotes": [],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "M04",
+      "category": "missing_personal_information",
+      "question": "Quel vaccin ai-je reçu lors de ma dernière consultation ?",
+      "expected_statuses": [
+        "abstain",
+        "clarify",
+        "personal"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 0.002,
+      "result": {
+        "trace_id": "bca1b9604b0042f79285c4b35474ed00",
+        "answer": "Je ne peux pas déterminer un diagnostic ni recommander une dose ou un traitement individuel. Adresse cette demande à un professionnel de santé. Tu peux poser une question générale sur une maladie ou un terme médical.",
+        "status": "personal",
+        "mode": "none",
+        "sources": [],
+        "intent": {
+          "label": "prevention",
+          "score": 0.218,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "latency_ms": 2.2
+      },
+      "generation_passages": [],
+      "reference_text": "",
+      "evidence_quotes": [],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "M05",
+      "category": "missing_personal_information",
+      "question": "Quel médecin a signé mon dernier compte rendu médical ?",
+      "expected_statuses": [
+        "abstain",
+        "clarify",
+        "personal"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 0.058,
+      "result": {
+        "trace_id": "831e88a1c72c41b7b85cd41ec3bb1eb9",
+        "answer": "Je ne trouve pas de passage suffisamment pertinent dans le corpus chargé. Précise la question ou consulte une source adaptée.",
+        "status": "abstain",
+        "mode": "none",
+        "sources": [],
+        "intent": {
+          "label": "definition",
+          "score": 0.193,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "skipped_no_accepted",
+          "candidate_count": 5,
+          "selected_count": 0,
+          "rerank_ms": 0.0,
+          "retrieval_ms": 57.01,
+          "candidate_order": [
+            {
+              "id": "medquad_e43b94666317e8adb967:1",
+              "document_id": "medquad_e43b94666317e8adb967",
+              "accepted": false,
+              "dense_score": 0.7991961240768433,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_11f276a6ed1072c65782:1",
+              "document_id": "medquad_11f276a6ed1072c65782",
+              "accepted": false,
+              "dense_score": 0.7987829446792603,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_f95343321539dce3252b:1",
+              "document_id": "medquad_f95343321539dce3252b",
+              "accepted": false,
+              "dense_score": 0.7947070598602295,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_f9daacef4089c249bffa:1",
+              "document_id": "medquad_f9daacef4089c249bffa",
+              "accepted": false,
+              "dense_score": 0.7926157712936401,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_a70947c2e00bde5fa301:1",
+              "document_id": "medquad_a70947c2e00bde5fa301",
+              "accepted": false,
+              "dense_score": 0.7926045656204224,
+              "reranker_score": null
+            }
+          ]
+        },
+        "latency_ms": 58.12
+      },
+      "generation_passages": [],
+      "reference_text": "",
+      "evidence_quotes": [],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "O01",
+      "category": "out_of_domain",
+      "question": "Comment remplacer la batterie de mon ordinateur portable ?",
+      "expected_statuses": [
+        "abstain"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 0.114,
+      "result": {
+        "trace_id": "772f4558a5a84368af9baddefa5175ab",
+        "answer": "Je ne trouve pas de passage suffisamment pertinent dans le corpus chargé. Précise la question ou consulte une source adaptée.",
+        "status": "abstain",
+        "mode": "none",
+        "sources": [],
+        "intent": {
+          "label": "prevention",
+          "score": 0.223,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "skipped_no_accepted",
+          "candidate_count": 5,
+          "selected_count": 0,
+          "rerank_ms": 0.0,
+          "retrieval_ms": 112.9,
+          "candidate_order": [
+            {
+              "id": "diabete_prevention:0",
+              "document_id": "diabete_prevention",
+              "accepted": false,
+              "dense_score": 0.7683818936347961,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_52e8e7f357a9541d4103:1",
+              "document_id": "medquad_52e8e7f357a9541d4103",
+              "accepted": false,
+              "dense_score": 0.7672739028930664,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_34531a6caf9d88500b67:3",
+              "document_id": "medquad_34531a6caf9d88500b67",
+              "accepted": false,
+              "dense_score": 0.7632545232772827,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_5ebb67109cd1a148083b:4",
+              "document_id": "medquad_5ebb67109cd1a148083b",
+              "accepted": false,
+              "dense_score": 0.7629444599151611,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_ce727db7df5f114e2966:1",
+              "document_id": "medquad_ce727db7df5f114e2966",
+              "accepted": false,
+              "dense_score": 0.7625905275344849,
+              "reranker_score": null
+            }
+          ]
+        },
+        "latency_ms": 114.22
+      },
+      "generation_passages": [],
+      "reference_text": "",
+      "evidence_quotes": [],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "O02",
+      "category": "out_of_domain",
+      "question": "What is the capital of Canada?",
+      "expected_statuses": [
+        "abstain"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 0.073,
+      "result": {
+        "trace_id": "07b97b95f79f4b2bb37f632608098e38",
+        "answer": "Je ne trouve pas de passage suffisamment pertinent dans le corpus chargé. Précise la question ou consulte une source adaptée.",
+        "status": "abstain",
+        "mode": "none",
+        "sources": [],
+        "intent": {
+          "label": "hors_domaine",
+          "score": 0.176,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "skipped_no_accepted",
+          "candidate_count": 5,
+          "selected_count": 0,
+          "rerank_ms": 0.0,
+          "retrieval_ms": 69.96,
+          "candidate_order": [
+            {
+              "id": "medquad_6bad8fe0aaf211c1e4f5:1",
+              "document_id": "medquad_6bad8fe0aaf211c1e4f5",
+              "accepted": false,
+              "dense_score": 0.7521315813064575,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_c5f5a5a4864605e776a6:1",
+              "document_id": "medquad_c5f5a5a4864605e776a6",
+              "accepted": false,
+              "dense_score": 0.747119665145874,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_588bff8134658a178551:2",
+              "document_id": "medquad_588bff8134658a178551",
+              "accepted": false,
+              "dense_score": 0.7451545000076294,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_11f276a6ed1072c65782:1",
+              "document_id": "medquad_11f276a6ed1072c65782",
+              "accepted": false,
+              "dense_score": 0.7436825037002563,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_f95343321539dce3252b:1",
+              "document_id": "medquad_f95343321539dce3252b",
+              "accepted": false,
+              "dense_score": 0.7433712482452393,
+              "reranker_score": null
+            }
+          ]
+        },
+        "latency_ms": 73.15
+      },
+      "generation_passages": [],
+      "reference_text": "",
+      "evidence_quotes": [],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "O03",
+      "category": "out_of_domain",
+      "question": "Comment conjuguer le verbe prendre au futur simple ?",
+      "expected_statuses": [
+        "abstain"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 0.104,
+      "result": {
+        "trace_id": "155f7ea4f0bd4926adfc17afdcfc6d86",
+        "answer": "Je ne trouve pas de passage suffisamment pertinent dans le corpus chargé. Précise la question ou consulte une source adaptée.",
+        "status": "abstain",
+        "mode": "none",
+        "sources": [],
+        "intent": {
+          "label": "prevention",
+          "score": 0.202,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "skipped_no_accepted",
+          "candidate_count": 5,
+          "selected_count": 0,
+          "rerank_ms": 0.0,
+          "retrieval_ms": 102.1,
+          "candidate_order": [
+            {
+              "id": "medquad_6bad8fe0aaf211c1e4f5:1",
+              "document_id": "medquad_6bad8fe0aaf211c1e4f5",
+              "accepted": false,
+              "dense_score": 0.764702558517456,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_1e898a8a88a195e1a8f9:1",
+              "document_id": "medquad_1e898a8a88a195e1a8f9",
+              "accepted": false,
+              "dense_score": 0.7531096935272217,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_25ada8e3f1f48c89ecca:4",
+              "document_id": "medquad_25ada8e3f1f48c89ecca",
+              "accepted": false,
+              "dense_score": 0.752131462097168,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_cf217c7ab7fd5af80f54:1",
+              "document_id": "medquad_cf217c7ab7fd5af80f54",
+              "accepted": false,
+              "dense_score": 0.7518062591552734,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_66faf76cf2e8830140b8:1",
+              "document_id": "medquad_66faf76cf2e8830140b8",
+              "accepted": false,
+              "dense_score": 0.7507999539375305,
+              "reranker_score": null
+            }
+          ]
+        },
+        "latency_ms": 104.35
+      },
+      "generation_passages": [],
+      "reference_text": "",
+      "evidence_quotes": [],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "O04",
+      "category": "out_of_domain",
+      "question": "Quelle recette permet de préparer une pâte à pizza ?",
+      "expected_statuses": [
+        "abstain"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 0.106,
+      "result": {
+        "trace_id": "0b6e281413724e71bdd3bf515758dc29",
+        "answer": "Je ne trouve pas de passage suffisamment pertinent dans le corpus chargé. Précise la question ou consulte une source adaptée.",
+        "status": "abstain",
+        "mode": "none",
+        "sources": [],
+        "intent": {
+          "label": "hors_domaine",
+          "score": 0.238,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "skipped_no_accepted",
+          "candidate_count": 5,
+          "selected_count": 0,
+          "rerank_ms": 0.0,
+          "retrieval_ms": 104.69,
+          "candidate_order": [
+            {
+              "id": "diabete_prevention:0",
+              "document_id": "diabete_prevention",
+              "accepted": false,
+              "dense_score": 0.7659018039703369,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_1d647b20bffb60897846:0",
+              "document_id": "medquad_1d647b20bffb60897846",
+              "accepted": false,
+              "dense_score": 0.7478587627410889,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_8816e6db43aedce247b8:0",
+              "document_id": "medquad_8816e6db43aedce247b8",
+              "accepted": false,
+              "dense_score": 0.7447109222412109,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_d6f39f60f2c0e1816366:3",
+              "document_id": "medquad_d6f39f60f2c0e1816366",
+              "accepted": false,
+              "dense_score": 0.7401630282402039,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_77f5b700e60b257df19f:0",
+              "document_id": "medquad_77f5b700e60b257df19f",
+              "accepted": false,
+              "dense_score": 0.7391108274459839,
+              "reranker_score": null
+            }
+          ]
+        },
+        "latency_ms": 106.37
+      },
+      "generation_passages": [],
+      "reference_text": "",
+      "evidence_quotes": [],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    },
+    {
+      "id": "O05",
+      "category": "out_of_domain",
+      "question": "How do I sort a Python list in descending order?",
+      "expected_statuses": [
+        "abstain"
+      ],
+      "status_matches_expectation": true,
+      "wall_seconds": 0.106,
+      "result": {
+        "trace_id": "0e0465e09f204cb5b7e3bbada4602b7b",
+        "answer": "Je ne trouve pas de passage suffisamment pertinent dans le corpus chargé. Précise la question ou consulte une source adaptée.",
+        "status": "abstain",
+        "mode": "none",
+        "sources": [],
+        "intent": {
+          "label": "hors_domaine",
+          "score": 0.227,
+          "method": "TF-IDF + régression logistique (jeu pédagogique)"
+        },
+        "entities": [],
+        "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+        "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+        "retrieval": {
+          "reranking_status": "skipped_no_accepted",
+          "candidate_count": 5,
+          "selected_count": 0,
+          "rerank_ms": 0.0,
+          "retrieval_ms": 104.42,
+          "candidate_order": [
+            {
+              "id": "medquad_b2419f02a00ce1872d26:1",
+              "document_id": "medquad_b2419f02a00ce1872d26",
+              "accepted": false,
+              "dense_score": 0.792335033416748,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_1e898a8a88a195e1a8f9:1",
+              "document_id": "medquad_1e898a8a88a195e1a8f9",
+              "accepted": false,
+              "dense_score": 0.7917197942733765,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_25ada8e3f1f48c89ecca:4",
+              "document_id": "medquad_25ada8e3f1f48c89ecca",
+              "accepted": false,
+              "dense_score": 0.7884541749954224,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_1810d8e89303db4b5d8f:1",
+              "document_id": "medquad_1810d8e89303db4b5d8f",
+              "accepted": false,
+              "dense_score": 0.7874003648757935,
+              "reranker_score": null
+            },
+            {
+              "id": "medquad_2cf364277b7b616ae435:1",
+              "document_id": "medquad_2cf364277b7b616ae435",
+              "accepted": false,
+              "dense_score": 0.7865684032440186,
+              "reranker_score": null
+            }
+          ]
+        },
+        "latency_ms": 106.0
+      },
+      "generation_passages": [],
+      "reference_text": "",
+      "evidence_quotes": [],
+      "error": null,
+      "manual_review": {
+        "faithful_to_passages": null,
+        "answers_question": null,
+        "citations_support_claims": null,
+        "language_quality": null,
+        "comment": ""
+      }
+    }
+  ],
+  "initialization_seconds": 12.373,
+  "summary": {
+    "covered": {
+      "questions": 15,
+      "statuses_conforming": 12,
+      "modes": {
+        "ollama": 12,
+        "abstain": 3
+      },
+      "mean_seconds": 48.45,
+      "median_seconds": 41.26,
+      "max_seconds": 178.03
+    },
+    "missing_personal_information": {
+      "questions": 5,
+      "statuses_conforming": 5,
+      "modes": {
+        "abstain": 3,
+        "none": 2
+      },
+      "mean_seconds": 15.98,
+      "median_seconds": 18.74,
+      "max_seconds": 35.5
+    },
+    "out_of_domain": {
+      "questions": 5,
+      "statuses_conforming": 5,
+      "modes": {
+        "none": 5
+      },
+      "mean_seconds": 0.1,
+      "median_seconds": 0.11,
+      "max_seconds": 0.11
+    }
+  }
+}
