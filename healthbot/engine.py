@@ -6,6 +6,8 @@ from .nlp import safety_route,entities,IntentModel,keywords
 from .retrieval import Retriever
 from .generation import generate
 from . import groq_provider
+from .local_routes import local_reply
+from .language import question_language, localize
 from .reranking import PassageReranker, configure_reranking
 
 class HealthBot:
@@ -63,6 +65,8 @@ class HealthBot:
         route=safety_route(question)
         if route=='safety':
             result.update(status='safety',answer="Ce message peut décrire une urgence. Contacte immédiatement les secours locaux ou rends-toi aux urgences. Ne retarde pas la recherche d'aide pour poursuivre cette conversation. Cet outil ne peut pas évaluer ta situation.")
+        elif (local := local_reply(question)) is not None:
+            result.update(local)
         elif route=='personal':
             result.update(status='personal',answer="Je ne peux pas déterminer un diagnostic ni recommander une dose ou un traitement individuel. Adresse cette demande à un professionnel de santé. Tu peux poser une question générale sur une maladie ou un terme médical.")
         elif re.search(r'[\u0600-\u06ff]',question):
@@ -83,5 +87,10 @@ class HealthBot:
                 if warning:result['warning']=warning
                 if mode!='abstain':
                     result['sources']=[{'citation':i,'id':h['id'],'document_id':h['document_id'],'title':h['title'],'url':h['source_url'],'text':h['text'],'language':h['language'],'content_kind':h.get('content_kind','document'),'retrieved_at':h.get('retrieved_at','inconnue')} for i,h in enumerate(hits,1)]
+        language = question_language(question)
+        result['response_language'] = language
+        if result['mode'] not in ('groq', 'ollama', 'extractive'):
+            result['answer'] = localize(result['answer'], language)
         result['latency_ms']=round((time.perf_counter()-start)*1000,2)
         return result
+
