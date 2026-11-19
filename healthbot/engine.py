@@ -5,11 +5,12 @@ from .settings import settings
 from .nlp import safety_route,entities,IntentModel,keywords
 from .retrieval import Retriever
 from .generation import generate
+from . import groq_provider
 from .reranking import PassageReranker, configure_reranking
 
 class HealthBot:
     def __init__(self,cfg=None):
-        self.cfg=configure_reranking(dict(cfg) if cfg is not None else settings())
+        self.cfg=groq_provider.configure_groq(configure_reranking(dict(cfg) if cfg is not None else settings()))
         self.retriever=Retriever(self.cfg)
         self.intent=IntentModel(self.cfg['intents'])
         self.reranker=PassageReranker(self.cfg['reranking_model']) if self.cfg['reranking_enabled'] else None
@@ -55,6 +56,7 @@ class HealthBot:
         if len(question)>self.cfg['max_question_chars']:
             raise ValueError('Question trop longue.')
         start=time.perf_counter()
+        groq_provider.TRACE.set(None)
         result={'trace_id':uuid.uuid4().hex,'answer':'','status':'abstain','mode':'none','sources':[],
                 'intent':self.intent.predict(question),'entities':entities(question),'corpus_hash':self.retriever.hash,
                 'notice':'Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.'}
@@ -75,8 +77,12 @@ class HealthBot:
             else:
                 answer,mode,warning=generate(question,hits,self.cfg)
                 result.update(answer=answer,mode=mode,status='abstain' if mode=='abstain' else 'answered')
+                if self.cfg['generation']=='groq':
+                    result['generation_trace']=groq_provider.snapshot()
+                    if mode=='extractive': result['status']='degraded'
                 if warning:result['warning']=warning
                 if mode!='abstain':
                     result['sources']=[{'citation':i,'id':h['id'],'document_id':h['document_id'],'title':h['title'],'url':h['source_url'],'text':h['text'],'language':h['language'],'content_kind':h.get('content_kind','document'),'retrieved_at':h.get('retrieved_at','inconnue')} for i,h in enumerate(hits,1)]
         result['latency_ms']=round((time.perf_counter()-start)*1000,2)
         return result
+

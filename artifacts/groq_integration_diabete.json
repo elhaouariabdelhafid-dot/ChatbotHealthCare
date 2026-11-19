@@ -1,0 +1,105 @@
+{
+  "trace_id": "34d30777ada64e178cae18805750e5cd",
+  "answer": "Le diabète est une maladie chronique caractérisée par une production insuffisante d’insuline ou par une mauvaise utilisation de cette hormone, entraînant une élévation du glucose sanguin. [1]",
+  "status": "answered",
+  "mode": "groq",
+  "sources": [
+    {
+      "citation": 1,
+      "id": "diabete_definition:0",
+      "document_id": "diabete_definition",
+      "title": "Diabète : définition",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/diabetes",
+      "text": "Le diabète est une maladie chronique liée à une production insuffisante d’insuline ou à une mauvaise utilisation de cette hormone. Cela peut augmenter le glucose dans le sang. L’insuline contribue à la régulation de la glycémie.",
+      "language": "fr",
+      "content_kind": "synthese_pedagogique_non_validee_cliniquement",
+      "retrieved_at": "2026-11-15"
+    },
+    {
+      "citation": 2,
+      "id": "medquad_d164e004070ae2e21309:0",
+      "document_id": "medquad_d164e004070ae2e21309",
+      "title": "Do you have information about Blood Sugar",
+      "url": "https://www.nlm.nih.gov/medlineplus/bloodsugar.html",
+      "text": "Summary : Blood sugar, or glucose, is the main sugar found in your blood. It comes from the food you eat, and is your body's main source of energy. Your blood carries glucose to all of your body's cells to use for energy. Diabetes is a disease in which your blood sugar levels are too high. Over time, having too much glucose in your blood can cause serious problems. Even if you don't have diabetes, sometimes you may have problems with blood sugar that is too low or too high. Keeping a regular schedule of eating, activity, and taking any medicines you need can help. If you do have diabetes, it is very important to keep your blood sugar numbers in your target range. You may need to check your blood sugar several times each day. Your health care provider",
+      "language": "en",
+      "content_kind": "medquad",
+      "retrieved_at": "inconnue"
+    }
+  ],
+  "intent": {
+    "label": "definition",
+    "score": 0.272,
+    "method": "TF-IDF + régression logistique (jeu pédagogique)"
+  },
+  "entities": [
+    {
+      "text": "diabète",
+      "label": "MALADIE",
+      "start": 17,
+      "end": 24,
+      "negation_candidate": false
+    }
+  ],
+  "corpus_hash": "34528d0056eca6f958c84b453effaa73ca0109bbb6e111c4950e33ef7784a182",
+  "notice": "Prototype académique : information générale, sans diagnostic ni prescription. Les règles ne détectent pas toutes les situations à risque.",
+  "retrieval": {
+    "reranking_status": "applied",
+    "candidate_count": 5,
+    "selected_count": 2,
+    "rerank_ms": 8020.55,
+    "retrieval_ms": 8718.71,
+    "candidate_order": [
+      {
+        "id": "diabete_definition:0",
+        "document_id": "diabete_definition",
+        "accepted": true,
+        "dense_score": 0.9100969433784485,
+        "reranker_score": 4.779825687408447
+      },
+      {
+        "id": "medquad_d164e004070ae2e21309:0",
+        "document_id": "medquad_d164e004070ae2e21309",
+        "accepted": true,
+        "dense_score": 0.8177098631858826,
+        "reranker_score": -1.980650782585144
+      },
+      {
+        "id": "medquad_ed162588158a47bbc20e:0",
+        "document_id": "medquad_ed162588158a47bbc20e",
+        "accepted": true,
+        "dense_score": 0.8125432729721069,
+        "reranker_score": -2.010598659515381
+      },
+      {
+        "id": "medquad_ed162588158a47bbc20e:1",
+        "document_id": "medquad_ed162588158a47bbc20e",
+        "accepted": true,
+        "dense_score": 0.8188029527664185,
+        "reranker_score": -3.5692999362945557
+      },
+      {
+        "id": "diabete_prevention:0",
+        "document_id": "diabete_prevention",
+        "accepted": true,
+        "dense_score": 0.8563076257705688,
+        "reranker_score": -7.3016037940979
+      }
+    ]
+  },
+  "generation_trace": {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "status": "answered",
+    "api_called": true,
+    "attempts": 1,
+    "reserved_tokens_estimate": 5742,
+    "usage": {
+      "prompt_tokens": 1269,
+      "completion_tokens": 200,
+      "total_tokens": 1469
+    },
+    "transport_ms": 836.4
+  },
+  "latency_ms": 9560.96
+}
