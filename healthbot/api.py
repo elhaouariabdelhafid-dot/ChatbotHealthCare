@@ -29,4 +29,3 @@ def info():
 def chat(body:Question):
     try:return get_bot().ask(body.question)
     except ValueError as e:raise HTTPException(status_code=422,detail=str(e)) from e
-

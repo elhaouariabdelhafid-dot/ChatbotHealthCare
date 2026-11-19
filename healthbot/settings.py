@@ -15,4 +15,3 @@ def settings(path=None):
     if not 1 <= cfg['top_k'] <= 5:
         raise ValueError('top_k doit être compris entre 1 et 5')
     return configure_groq(configure_reranking(cfg))
-

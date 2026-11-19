@@ -85,4 +85,3 @@ class HealthBot:
                     result['sources']=[{'citation':i,'id':h['id'],'document_id':h['document_id'],'title':h['title'],'url':h['source_url'],'text':h['text'],'language':h['language'],'content_kind':h.get('content_kind','document'),'retrieved_at':h.get('retrieved_at','inconnue')} for i,h in enumerate(hits,1)]
         result['latency_ms']=round((time.perf_counter()-start)*1000,2)
         return result
-
